@@ -28,11 +28,7 @@ import com.chrisseto.tilttolive.managment.SceneManager;
 import com.chrisseto.tilttolive.managment.SceneManager.SceneType;
 import com.chrisseto.tilttolive.object.Player;
 
-/**
- * @author Mateusz Mysliwiec
- * @author www.matim-dev.com
- * @version 1.0
- */
+
 public class GameScene extends com.chrisseto.tilttolive.base.BaseScene implements IOnSceneTouchListener
 {
 	private int score = 0;
@@ -64,7 +60,6 @@ public class GameScene extends com.chrisseto.tilttolive.base.BaseScene implement
 	{
 		createBackground();
 		createHUD();
-		createPhysics();
 		loadLevel(1);
 		createGameOverText();
 		
@@ -265,77 +260,4 @@ public class GameScene extends com.chrisseto.tilttolive.base.BaseScene implement
 		scoreText.setText("Score: " + score);
 	}
 	
-	private void createPhysics()
-	{
-		physicsWorld = new FixedStepPhysicsWorld(60, new Vector2(0, -17), false); 
-		physicsWorld.setContactListener(contactListener());
-		registerUpdateHandler(physicsWorld);
-	}
-	
-	// ---------------------------------------------
-	// INTERNAL CLASSES
-	// ---------------------------------------------
-
-	private ContactListener contactListener()
-	{
-		ContactListener contactListener = new ContactListener()
-		{
-			public void beginContact(Contact contact)
-			{
-				final Fixture x1 = contact.getFixtureA();
-				final Fixture x2 = contact.getFixtureB();
-
-				if (x1.getBody().getUserData() != null && x2.getBody().getUserData() != null)
-				{
-					if (x2.getBody().getUserData().equals("player"))
-					{
-						player.increaseFootContacts();
-					}
-					
-					if (x1.getBody().getUserData().equals("platform2") && x2.getBody().getUserData().equals("player"))
-					{
-						engine.registerUpdateHandler(new TimerHandler(0.2f, new ITimerCallback()
-						{									
-						    public void onTimePassed(final TimerHandler pTimerHandler)
-						    {
-						    	pTimerHandler.reset();
-						    	engine.unregisterUpdateHandler(pTimerHandler);
-						    	x1.getBody().setType(BodyType.DynamicBody);
-						    }
-						}));
-					}
-					
-					if (x1.getBody().getUserData().equals("platform3") && x2.getBody().getUserData().equals("player"))
-					{
-						x1.getBody().setType(BodyType.DynamicBody);
-					}
-				}
-			}
-
-			public void endContact(Contact contact)
-			{
-				final Fixture x1 = contact.getFixtureA();
-				final Fixture x2 = contact.getFixtureB();
-
-				if (x1.getBody().getUserData() != null && x2.getBody().getUserData() != null)
-				{
-					if (x2.getBody().getUserData().equals("player"))
-					{
-						player.decreaseFootContacts();
-					}
-				}
-			}
-
-			public void preSolve(Contact contact, Manifold oldManifold)
-			{
-
-			}
-
-			public void postSolve(Contact contact, ContactImpulse impulse)
-			{
-
-			}
-		};
-		return contactListener;
-	}
 }

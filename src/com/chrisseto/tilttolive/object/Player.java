@@ -1,13 +1,18 @@
 package com.chrisseto.tilttolive.object;
 
 import android.graphics.Color;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+
 import com.chrisseto.tilttolive.base.Ball;
 import com.chrisseto.tilttolive.util.Assets;
+import com.chrisseto.tilttolive.util.BVector;
 
 
 
 
-public class Player extends Ball
+public class Player extends Ball implements SensorEventListener
 {
 	boolean hasShield,hasSpikes;
 	int powerUpRadius;
@@ -27,18 +32,6 @@ public class Player extends Ball
 		super.update();
 	}
 	
-	public void addPowerUp(PowerUpType type)
-	{
-			switch(type)
-			{
-			case Shield:
-					hasShield = true;
-				break;
-			case Spike:
-					hasSpikes = true;
-				break;
-			}
-	}
 	private void breakShield()
 	{
 		if(hasShield && !hasSpikes)
@@ -51,4 +44,26 @@ public class Player extends Ball
 	//For power ups etc
 	//Has another ball "kill zone?"
 	//check collisionkillzone + check collision
+	@Override
+	public void onAccuracyChanged(Sensor arg0, int arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onSensorChanged(SensorEvent e) {
+		synchronized(this)
+		{
+			switch(e.sensor.getType())
+			{
+			case Sensor.TYPE_ACCELEROMETER:
+				//x = e.value[0]
+				//y = e.value[1]
+				setVelocity(new BVector(e.values[0],e.values[1]));//This fill have to be updated * speedMult or something
+				break;
+			}
+		}
+		// TODO Auto-generated method stub
+		
+	}
 }

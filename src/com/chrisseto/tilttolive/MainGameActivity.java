@@ -15,16 +15,21 @@ import org.andengine.ui.activity.BaseGameActivity;
 import com.chrisseto.tilttolive.managment.SceneManager;
 import com.chrisseto.tilttolive.base.BaseScene;
 
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.KeyEvent;
 import android.view.Menu;
 
-public class MainGameActivity extends BaseGameActivity {
+public class MainGameActivity extends BaseGameActivity implements SensorEventListener{
 
 	
 	private BoundCamera camera;
 	
+	private SensorManager sensorManager;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -93,5 +98,27 @@ public class MainGameActivity extends BaseGameActivity {
 	{
 		super.onDestroy();
 		System.exit(0);	
+	}
+
+	@Override
+	public void onAccuracyChanged(Sensor arg0, int arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onSensorChanged(SensorEvent e) {
+		synchronized(this)
+		{
+			switch(e.sensor.getType())
+			{
+			case Sensor.TYPE_ACCELEROMETER:
+				//x = e.value[0]
+				//y = e.value[1]
+				break;
+			}
+		}
+		// TODO Auto-generated method stub
+		
 	}
 }
