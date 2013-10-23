@@ -4,8 +4,8 @@ import org.andengine.entity.scene.background.Background;
 import org.andengine.entity.text.Text;
 import org.andengine.util.adt.color.Color;
 
-import com.matimdev.base.BaseScene;
-import com.matimdev.manager.SceneManager.SceneType;
+import com.chrisseto.tilttolive.base.BaseScene;
+import com.chrisseto.tilttolive.managment.SceneManager.SceneType;
 
 public class LoadingScene extends BaseScene
 {
