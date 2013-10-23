@@ -9,11 +9,10 @@ import org.andengine.entity.scene.menu.item.decorator.ScaleMenuItemDecorator;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.opengl.util.GLState;
 
-import com.matimdev.base.BaseScene;
-import com.matimdev.manager.SceneManager;
-import com.matimdev.manager.SceneManager.SceneType;
+import com.chrisseto.tilttolive.managment.SceneManager;
+import com.chrisseto.tilttolive.managment.SceneManager.SceneType;
 
-public class MainMenuScene extends BaseScene implements IOnMenuItemClickListener
+public class MainMenuScene extends com.chrisseto.tilttolive.base.BaseScene implements IOnMenuItemClickListener
 {
 	//---------------------------------------------
 	// VARIABLES
