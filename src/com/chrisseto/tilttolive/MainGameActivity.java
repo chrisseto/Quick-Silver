@@ -12,6 +12,9 @@ import org.andengine.engine.options.resolutionpolicy.FillResolutionPolicy;
 import org.andengine.entity.scene.Scene;
 import org.andengine.ui.activity.BaseGameActivity;
 
+import com.chrisseto.tilttolive.managment.SceneManager;
+import com.chrisseto.tilttolive.base.BaseScene;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.KeyEvent;

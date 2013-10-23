@@ -5,17 +5,13 @@ import org.andengine.engine.handler.timer.ITimerCallback;
 import org.andengine.engine.handler.timer.TimerHandler;
 import org.andengine.ui.IGameInterface.OnCreateSceneCallback;
 
-import com.matimdev.base.BaseScene;
-import com.matimdev.scene.GameScene;
-import com.matimdev.scene.LoadingScene;
-import com.matimdev.scene.MainMenuScene;
-import com.matimdev.scene.SplashScene;
+import com.chrisseto.tilttolive.base.BaseScene;
+import com.chrisseto.tilttolive.scene.GameScene;
+import com.chrisseto.tilttolive.scene.LoadingScene;
+import com.chrisseto.tilttolive.scene.MainMenuScene;
+import com.chrisseto.tilttolive.scene.SplashScene;
+import com.chrisseto.tilttolive.util.Assets;
 
-/**
- * @author Mateusz Mysliwiec
- * @author www.matim-dev.com
- * @version 1.0
- */
 public class SceneManager
 {
 	//---------------------------------------------
@@ -37,7 +33,7 @@ public class SceneManager
 	
 	private BaseScene currentScene;
 	
-	private Engine engine = ResourcesManager.getInstance().engine;
+	private Engine engine = Assets.getInstance().engine;
 	
 	public enum SceneType
 	{
@@ -81,7 +77,7 @@ public class SceneManager
 	
 	public void createMenuScene()
 	{
-		ResourcesManager.getInstance().loadMenuResources();
+		Assets.getInstance().loadMenuResources();
 		menuScene = new MainMenuScene();
 		loadingScene = new LoadingScene();
         SceneManager.getInstance().setScene(menuScene);
@@ -90,7 +86,7 @@ public class SceneManager
 	
 	public void createSplashScene(OnCreateSceneCallback pOnCreateSceneCallback)
 	{
-		ResourcesManager.getInstance().loadSplashScreen();
+		Assets.getInstance().loadSplashScreen();
 		splashScene = new SplashScene();
 		currentScene = splashScene;
 		pOnCreateSceneCallback.onCreateSceneFinished(splashScene);
@@ -98,7 +94,7 @@ public class SceneManager
 	
 	private void disposeSplashScene()
 	{
-		ResourcesManager.getInstance().unloadSplashScreen();
+		Assets.getInstance().unloadSplashScreen();
 		splashScene.disposeScene();
 		splashScene = null;
 	}
@@ -106,13 +102,13 @@ public class SceneManager
 	public void loadGameScene(final Engine mEngine)
 	{
 		setScene(loadingScene);
-		ResourcesManager.getInstance().unloadMenuTextures();
+		Assets.getInstance().unloadMenuTextures();
 		mEngine.registerUpdateHandler(new TimerHandler(0.1f, new ITimerCallback() 
 		{
             public void onTimePassed(final TimerHandler pTimerHandler) 
             {
             	mEngine.unregisterUpdateHandler(pTimerHandler);
-            	ResourcesManager.getInstance().loadGameResources();
+            	Assets.getInstance().loadGameResources();
         		gameScene = new GameScene();
         		setScene(gameScene);
             }
@@ -123,13 +119,13 @@ public class SceneManager
 	{
 		setScene(loadingScene);
 		gameScene.disposeScene();
-		ResourcesManager.getInstance().unloadGameTextures();
+		Assets.getInstance().unloadGameTextures();
 		mEngine.registerUpdateHandler(new TimerHandler(0.1f, new ITimerCallback() 
 		{
             public void onTimePassed(final TimerHandler pTimerHandler) 
             {
             	mEngine.unregisterUpdateHandler(pTimerHandler);
-            	ResourcesManager.getInstance().loadMenuTextures();
+            	Assets.getInstance().loadMenuTextures();
         		setScene(menuScene);
             }
 		}));

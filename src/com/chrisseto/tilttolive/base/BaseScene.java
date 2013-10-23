@@ -7,14 +7,9 @@ import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import android.app.Activity;
 
-import com.matimdev.manager.ResourcesManager;
-import com.matimdev.manager.SceneManager.SceneType;
+import com.chrisseto.tilttolive.managment.SceneManager.SceneType;
+import com.chrisseto.tilttolive.util.Assets;
 
-/**
- * @author Mateusz Mysliwiec
- * @author www.matim-dev.com
- * @version 1.0
- */
 public abstract class BaseScene extends Scene
 {
 	//---------------------------------------------
@@ -23,7 +18,7 @@ public abstract class BaseScene extends Scene
 	
 	protected Engine engine;
 	protected Activity activity;
-	protected ResourcesManager resourcesManager;
+	protected Assets resourcesManager;
 	protected VertexBufferObjectManager vbom;
 	protected BoundCamera camera;
 	
@@ -33,7 +28,7 @@ public abstract class BaseScene extends Scene
 	
 	public BaseScene()
 	{
-		this.resourcesManager = ResourcesManager.getInstance();
+		this.resourcesManager = Assets.getInstance();
 		this.engine = resourcesManager.engine;
 		this.activity = resourcesManager.activity;
 		this.vbom = resourcesManager.vbom;

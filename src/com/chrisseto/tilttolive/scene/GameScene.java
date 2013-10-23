@@ -14,10 +14,6 @@ import org.andengine.entity.scene.background.Background;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.text.Text;
 import org.andengine.entity.text.TextOptions;
-import org.andengine.extension.physics.box2d.FixedStepPhysicsWorld;
-import org.andengine.extension.physics.box2d.PhysicsConnector;
-import org.andengine.extension.physics.box2d.PhysicsFactory;
-import org.andengine.extension.physics.box2d.PhysicsWorld;
 import org.andengine.input.touch.TouchEvent;
 import org.andengine.util.SAXUtils;
 import org.andengine.util.adt.align.HorizontalAlign;
@@ -28,35 +24,21 @@ import org.andengine.util.level.simple.SimpleLevelEntityLoaderData;
 import org.andengine.util.level.simple.SimpleLevelLoader;
 import org.xml.sax.Attributes;
 
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
-import com.badlogic.gdx.physics.box2d.Contact;
-import com.badlogic.gdx.physics.box2d.ContactImpulse;
-import com.badlogic.gdx.physics.box2d.ContactListener;
-import com.badlogic.gdx.physics.box2d.Fixture;
-import com.badlogic.gdx.physics.box2d.FixtureDef;
-import com.badlogic.gdx.physics.box2d.Manifold;
-import com.matimdev.base.BaseScene;
-import com.matimdev.extras.LevelCompleteWindow;
-import com.matimdev.extras.LevelCompleteWindow.StarsCount;
-import com.matimdev.manager.SceneManager;
-import com.matimdev.manager.SceneManager.SceneType;
-import com.matimdev.object.Player;
+import com.chrisseto.tilttolive.managment.SceneManager;
+import com.chrisseto.tilttolive.managment.SceneManager.SceneType;
+import com.chrisseto.tilttolive.object.Player;
 
 /**
  * @author Mateusz Mysliwiec
  * @author www.matim-dev.com
  * @version 1.0
  */
-public class GameScene extends BaseScene implements IOnSceneTouchListener
+public class GameScene extends com.chrisseto.tilttolive.base.BaseScene implements IOnSceneTouchListener
 {
 	private int score = 0;
 	
 	private HUD gameHUD;
 	private Text scoreText;
-	private PhysicsWorld physicsWorld;
-	private LevelCompleteWindow levelCompleteWindow;
 	
 	private static final String TAG_ENTITY = "entity";
 	private static final String TAG_ENTITY_ATTRIBUTE_X = "x";
