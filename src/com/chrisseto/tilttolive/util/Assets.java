@@ -21,6 +21,7 @@ import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import org.andengine.util.debug.Debug;
 
 import android.graphics.Color;
+import android.hardware.SensorManager;
 
 import com.chrisseto.tilttolive.MainGameActivity;
 
@@ -55,6 +56,7 @@ public class Assets {
 	public MainGameActivity activity;
 	public BoundCamera camera;
 	public VertexBufferObjectManager vbom;
+	public SensorManager sensorManager;
 	
 	public Font font;
 	

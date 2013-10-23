@@ -24,9 +24,12 @@ import org.andengine.util.level.simple.SimpleLevelEntityLoaderData;
 import org.andengine.util.level.simple.SimpleLevelLoader;
 import org.xml.sax.Attributes;
 
+import android.hardware.Sensor;
+
 import com.chrisseto.tilttolive.managment.SceneManager;
 import com.chrisseto.tilttolive.managment.SceneManager.SceneType;
 import com.chrisseto.tilttolive.object.Player;
+import com.chrisseto.tilttolive.util.Assets;
 
 
 public class GameScene extends com.chrisseto.tilttolive.base.BaseScene implements IOnSceneTouchListener
@@ -63,8 +66,8 @@ public class GameScene extends com.chrisseto.tilttolive.base.BaseScene implement
 		loadLevel(1);
 		createGameOverText();
 		
-		levelCompleteWindow = new LevelCompleteWindow(vbom);
-		
+		//levelCompleteWindow = new LevelCompleteWindow(vbom);
+		Assets.getInstance().sensorManager.registerListener(player, Assets.getInstance().sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),Assets.getInstance().sensorManager.SENSOR_DELAY_GAME);
 		setOnSceneTouchListener(this); 
 	}
 
@@ -93,135 +96,14 @@ public class GameScene extends com.chrisseto.tilttolive.base.BaseScene implement
 	
 	public boolean onSceneTouchEvent(Scene pScene, TouchEvent pSceneTouchEvent)
 	{
-		if (pSceneTouchEvent.isActionDown())
-		{
-			if (!firstTouch)
-			{
-				player.setRunning();
-				firstTouch = true;
-			}
-			else
-			{
-				player.jump();
-			}
-		}
+		//TODO Put somthing in here
 		return false;
 	}
 	
 	private void loadLevel(int levelID)
 	{
-		final SimpleLevelLoader levelLoader = new SimpleLevelLoader(vbom);
-		
-		final FixtureDef FIXTURE_DEF = PhysicsFactory.createFixtureDef(0, 0.01f, 0.5f);
-		
-		levelLoader.registerEntityLoader(new EntityLoader<SimpleLevelEntityLoaderData>(LevelConstants.TAG_LEVEL)
-		{
-			public IEntity onLoadEntity(final String pEntityName, final IEntity pParent, final Attributes pAttributes, final SimpleLevelEntityLoaderData pSimpleLevelEntityLoaderData) throws IOException 
-			{
-				final int width = SAXUtils.getIntAttributeOrThrow(pAttributes, LevelConstants.TAG_LEVEL_ATTRIBUTE_WIDTH);
-				final int height = SAXUtils.getIntAttributeOrThrow(pAttributes, LevelConstants.TAG_LEVEL_ATTRIBUTE_HEIGHT);
-				
-				camera.setBounds(0, 0, width, height); // here we set camera bounds
-				camera.setBoundsEnabled(true);
-
-				return GameScene.this;
-			}
-		});
-		
-		levelLoader.registerEntityLoader(new EntityLoader<SimpleLevelEntityLoaderData>(TAG_ENTITY)
-		{
-			public IEntity onLoadEntity(final String pEntityName, final IEntity pParent, final Attributes pAttributes, final SimpleLevelEntityLoaderData pSimpleLevelEntityLoaderData) throws IOException
-			{
-				final int x = SAXUtils.getIntAttributeOrThrow(pAttributes, TAG_ENTITY_ATTRIBUTE_X);
-				final int y = SAXUtils.getIntAttributeOrThrow(pAttributes, TAG_ENTITY_ATTRIBUTE_Y);
-				final String type = SAXUtils.getAttributeOrThrow(pAttributes, TAG_ENTITY_ATTRIBUTE_TYPE);
-				
-				final Sprite levelObject;
-				
-				if (type.equals(TAG_ENTITY_ATTRIBUTE_TYPE_VALUE_PLATFORM1))
-				{
-					levelObject = new Sprite(x, y, resourcesManager.platform1_region, vbom);
-					PhysicsFactory.createBoxBody(physicsWorld, levelObject, BodyType.StaticBody, FIXTURE_DEF).setUserData("platform1");
-				} 
-				else if (type.equals(TAG_ENTITY_ATTRIBUTE_TYPE_VALUE_PLATFORM2))
-				{
-					levelObject = new Sprite(x, y, resourcesManager.platform2_region, vbom);
-					final Body body = PhysicsFactory.createBoxBody(physicsWorld, levelObject, BodyType.StaticBody, FIXTURE_DEF);
-					body.setUserData("platform2");
-					physicsWorld.registerPhysicsConnector(new PhysicsConnector(levelObject, body, true, false));
-				}
-				else if (type.equals(TAG_ENTITY_ATTRIBUTE_TYPE_VALUE_PLATFORM3))
-				{
-					levelObject = new Sprite(x, y, resourcesManager.platform3_region, vbom);
-					final Body body = PhysicsFactory.createBoxBody(physicsWorld, levelObject, BodyType.StaticBody, FIXTURE_DEF);
-					body.setUserData("platform3");
-					physicsWorld.registerPhysicsConnector(new PhysicsConnector(levelObject, body, true, false));
-				}
-				else if (type.equals(TAG_ENTITY_ATTRIBUTE_TYPE_VALUE_COIN))
-				{
-					levelObject = new Sprite(x, y, resourcesManager.coin_region, vbom)
-					{
-						@Override
-						protected void onManagedUpdate(float pSecondsElapsed) 
-						{
-							super.onManagedUpdate(pSecondsElapsed);
-
-							if (player.collidesWith(this))
-							{
-								addToScore(10);
-								this.setVisible(false);
-								this.setIgnoreUpdate(true);
-							}
-						}
-					};
-					levelObject.registerEntityModifier(new LoopEntityModifier(new ScaleModifier(1, 1, 1.3f)));
-				}	
-				else if (type.equals(TAG_ENTITY_ATTRIBUTE_TYPE_VALUE_PLAYER))
-				{
-					player = new Player(x, y, vbom, camera, physicsWorld)
-					{
-						@Override
-						public void onDie()
-						{
-							if (!gameOverDisplayed)
-							{
-								displayGameOverText();
-							}
-						}
-					};
-					levelObject = player;
-				}
-				else if (type.equals(TAG_ENTITY_ATTRIBUTE_TYPE_VALUE_LEVEL_COMPLETE))
-				{
-					levelObject = new Sprite(x, y, resourcesManager.complete_stars_region, vbom)
-					{
-						@Override
-						protected void onManagedUpdate(float pSecondsElapsed) 
-						{
-							super.onManagedUpdate(pSecondsElapsed);
-
-							if (player.collidesWith(this))
-							{
-								levelCompleteWindow.display(StarsCount.TWO, GameScene.this, camera);
-								this.setVisible(false);
-								this.setIgnoreUpdate(true);
-							}
-						}
-					};
-					levelObject.registerEntityModifier(new LoopEntityModifier(new ScaleModifier(1, 1, 1.3f)));
-				}	
-				else
-				{
-					throw new IllegalArgumentException();
-				}
-
-				levelObject.setCullingEnabled(true);
-
-				return levelObject;
-			}
-		});
-
-		levelLoader.loadLevelFromAsset(activity.getAssets(), "level/" + levelID + ".lvl");
+		//Might need something here in the future
+		//Difficulty? eh
 	}
 	
 	private void createGameOverText()

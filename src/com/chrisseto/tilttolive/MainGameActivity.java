@@ -13,6 +13,7 @@ import org.andengine.entity.scene.Scene;
 import org.andengine.ui.activity.BaseGameActivity;
 
 import com.chrisseto.tilttolive.managment.SceneManager;
+import com.chrisseto.tilttolive.util.Assets;
 import com.chrisseto.tilttolive.base.BaseScene;
 
 import android.hardware.Sensor;
@@ -74,6 +75,9 @@ public class MainGameActivity extends BaseGameActivity implements SensorEventLis
 	public void onCreateResources(
 			OnCreateResourcesCallback pOnCreateResourcesCallback)
 			throws IOException {
+		Assets.prepareManager(mEngine, this, camera, getVertexBufferObjectManager());
+		Assets.getInstance().sensorManager = (SensorManager) this.getSystemService(this.SENSOR_SERVICE);
+		pOnCreateResourcesCallback.onCreateResourcesFinished();
 		// TODO Auto-generated method stub
 		
 	}

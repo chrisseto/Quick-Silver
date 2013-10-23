@@ -18,7 +18,6 @@ public abstract class Ball extends AnimatedSprite
 		setPosition(new BVector(x,y));
 		this.size = size;
 		this.color = color;
-		
 	}
 
 	public boolean checkCollision(Ball other)
