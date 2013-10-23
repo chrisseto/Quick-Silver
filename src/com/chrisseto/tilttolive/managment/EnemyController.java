@@ -3,6 +3,9 @@ package com.chrisseto.tilttolive.managment;
 import java.util.ArrayList;
 import java.math.*;
 
+import com.chrisseto.tilttolive.util.BVector;
+import com.chrisseto.tilttolive.util.Timer;
+
 public class EnemyController {
 	private ArrayList<EnemyBall> reds;
 	Timer spawnNext;

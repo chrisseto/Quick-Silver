@@ -1,6 +1,8 @@
 package com.chrisseto.tilttolive.object;
 
-import java.awt.Color;
+import android.graphics.Color;
+import com.chrisseto.tilttolive.base.Ball;
+import com.chrisseto.tilttolive.util.Assets;
 
 
 
