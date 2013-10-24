@@ -42,7 +42,7 @@ public class GameScene extends com.chrisseto.tilttolive.base.BaseScene implement
 		createGameOverText();
 		
 		//levelCompleteWindow = new LevelCompleteWindow(vbom);
-		player = new Player(vbom);
+		player = new Player(vbom,camera);
 		
 		Assets.getInstance().sensorManager.registerListener(player, Assets.getInstance().sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),Assets.getInstance().sensorManager.SENSOR_DELAY_GAME);
 		this.attachChild(player);

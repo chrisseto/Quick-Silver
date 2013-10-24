@@ -1,5 +1,6 @@
 package com.chrisseto.tilttolive.object;
 
+import org.andengine.engine.camera.Camera;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import org.andengine.util.debug.Debug;
 
@@ -17,14 +18,21 @@ import com.chrisseto.tilttolive.util.BVector;
 
 public class Player extends Ball implements SensorEventListener
 {
-	boolean hasShield,hasSpikes;
+	boolean hasShield,hasSpikes,first;
 	int powerUpRadius;
-	public Player(VertexBufferObjectManager vbom)
+	float speed;
+	float[] accelCal;
+	
+	public Player(VertexBufferObjectManager vbom,Camera camera)
 	{
-		super(12,12,40,Assets.getInstance().ball_region,vbom);
+		super(12,12,38,Assets.getInstance().ball_region,vbom,camera);
 		hasShield = false;
 		hasSpikes = false;
 		powerUpRadius = 0;
+		setX(camera.getCenterX());
+		setY(camera.getCenterY());
+		first = true;
+		speed = 1.5f;
 		//init position will always be in the middle of the screen
 	}	
 	
@@ -37,17 +45,7 @@ public class Player extends Ball implements SensorEventListener
 	{
 		return false;
 	}
-	public void checkBounds()
-	{
-		if(getX() > Assets.WIDTH)
-			setX(Assets.WIDTH);
-		if(getX() < 0)
-			setX(0);
-		if(getY() > Assets.HEIGHT)
-			setY(Assets.HEIGHT);
-		if(getY() < 0)
-			setY(0);
-	}
+
 	@Override
 	public void update()
 	{
@@ -72,8 +70,14 @@ public class Player extends Ball implements SensorEventListener
 			case Sensor.TYPE_ACCELEROMETER:
 				//x = e.value[0]
 				//y = e.value[1]
-				setVelocity(new BVector(e.values[0],e.values[1]));//This fill have to be updated * speedMult or something
-				super.update();
+				if(first)
+				{
+					first = false;
+					accelCal = new float[3];
+					System.arraycopy(e.values, 0, accelCal, 0, e.values.length);
+				}
+				setVelocity(new BVector((e.values[1]-accelCal[1])*speed,(-e.values[0]+accelCal[0])*speed));//This fill have to be updated * speedMult or something
+				update();
 				break;
 			}
 		}
