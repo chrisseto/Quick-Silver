@@ -11,7 +11,7 @@ public abstract class Ball extends Sprite
 {
 
 	private int size;
-	private BVector velocity;
+	private BVector velocity,position;
 	private float WIDTH,HEIGHT;
 	public Ball(float pX, float pY, int size,
 			ITextureRegion pTextureRegion,
@@ -20,6 +20,7 @@ public abstract class Ball extends Sprite
 		WIDTH = camera.getWidth();
 		HEIGHT = camera.getHeight();
 		this.size = size;
+		this.position = new BVector(pX,pY);
 	}
 	
 	public void setVelocity(BVector v)
@@ -56,5 +57,27 @@ public abstract class Ball extends Sprite
 			setY(HEIGHT-getRadius());
 		if(getY() < getRadius())
 			setY(getRadius());
+	}
+	@Override
+	public void setX(float x)
+	{
+		position.x = x;
+		super.setX(x);
+	}
+	@Override
+	public void setY(float y)
+	{
+		position.y = y;
+		super.setY(y);
+	}
+	public BVector getPosition()
+	{
+		return position;
+	}
+	public void updatePosition(BVector velocity)
+	{
+		position.add(velocity);
+		super.setX(position.x);
+		super.setY(position.y);
 	}
 }

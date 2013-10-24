@@ -76,7 +76,7 @@ public class Player extends Ball implements SensorEventListener
 					accelCal = new float[3];
 					System.arraycopy(e.values, 0, accelCal, 0, e.values.length);
 				}
-				setVelocity(new BVector((e.values[1]-accelCal[1])*speed,(-e.values[0]+accelCal[0])*speed));//This fill have to be updated * speedMult or something
+				setVelocity(new BVector((e.values[1]-accelCal[1]),(-e.values[0]+accelCal[0])));//This fill have to be updated * speedMult or something
 				update();
 				break;
 			}
