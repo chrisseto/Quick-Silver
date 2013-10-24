@@ -3,11 +3,6 @@ package com.chrisseto.tilttolive.scene;
 import java.io.IOException;
 
 import org.andengine.engine.camera.hud.HUD;
-import org.andengine.engine.handler.timer.ITimerCallback;
-import org.andengine.engine.handler.timer.TimerHandler;
-import org.andengine.entity.IEntity;
-import org.andengine.entity.modifier.LoopEntityModifier;
-import org.andengine.entity.modifier.ScaleModifier;
 import org.andengine.entity.scene.IOnSceneTouchListener;
 import org.andengine.entity.scene.Scene;
 import org.andengine.entity.scene.background.Background;
@@ -15,14 +10,8 @@ import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.text.Text;
 import org.andengine.entity.text.TextOptions;
 import org.andengine.input.touch.TouchEvent;
-import org.andengine.util.SAXUtils;
 import org.andengine.util.adt.align.HorizontalAlign;
 import org.andengine.util.adt.color.Color;
-import org.andengine.util.level.EntityLoader;
-import org.andengine.util.level.constants.LevelConstants;
-import org.andengine.util.level.simple.SimpleLevelEntityLoaderData;
-import org.andengine.util.level.simple.SimpleLevelLoader;
-import org.xml.sax.Attributes;
 
 import android.hardware.Sensor;
 

@@ -1,5 +1,7 @@
 package com.chrisseto.tilttolive.object;
 
+import org.andengine.opengl.vbo.VertexBufferObjectManager;
+
 import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -16,9 +18,9 @@ public class Player extends Ball implements SensorEventListener
 {
 	boolean hasShield,hasSpikes;
 	int powerUpRadius;
-	public Player()
+	public Player(VertexBufferObjectManager vbom)
 	{
-		super(Assets.WIDTH/2,Assets.HEIGHT/2,Assets.PLAYERSIZE,Color.BLUE);
+		super(12,12,40,Assets.getInstance().ball_region,vbom);
 		hasShield = false;
 		hasSpikes = false;
 		powerUpRadius = 0;
