@@ -1,6 +1,7 @@
 package com.chrisseto.tilttolive.object;
 
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
+import org.andengine.util.debug.Debug;
 
 import android.graphics.Color;
 import android.hardware.Sensor;
@@ -26,13 +27,6 @@ public class Player extends Ball implements SensorEventListener
 		powerUpRadius = 0;
 		//init position will always be in the middle of the screen
 	}	
-
-	@Override
-	public void update()
-	{
-		//Process User input or just read in
-		super.update();
-	}
 	
 	private void breakShield()
 	{
@@ -42,6 +36,23 @@ public class Player extends Ball implements SensorEventListener
 	public boolean checkCollisionPowerUps(BVector pos)
 	{
 		return false;
+	}
+	public void checkBounds()
+	{
+		if(getX() > Assets.WIDTH)
+			setX(Assets.WIDTH);
+		if(getX() < 0)
+			setX(0);
+		if(getY() > Assets.HEIGHT)
+			setY(Assets.HEIGHT);
+		if(getY() < 0)
+			setY(0);
+	}
+	@Override
+	public void update()
+	{
+		super.update();
+		checkBounds();
 	}
 	//For power ups etc
 	//Has another ball "kill zone?"
@@ -62,6 +73,7 @@ public class Player extends Ball implements SensorEventListener
 				//x = e.value[0]
 				//y = e.value[1]
 				setVelocity(new BVector(e.values[0],e.values[1]));//This fill have to be updated * speedMult or something
+				super.update();
 				break;
 			}
 		}

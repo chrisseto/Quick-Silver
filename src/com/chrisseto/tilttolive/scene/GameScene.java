@@ -28,24 +28,10 @@ public class GameScene extends com.chrisseto.tilttolive.base.BaseScene implement
 	private HUD gameHUD;
 	private Text scoreText;
 	
-	private static final String TAG_ENTITY = "entity";
-	private static final String TAG_ENTITY_ATTRIBUTE_X = "x";
-	private static final String TAG_ENTITY_ATTRIBUTE_Y = "y";
-	private static final String TAG_ENTITY_ATTRIBUTE_TYPE = "type";
-	
-	private static final Object TAG_ENTITY_ATTRIBUTE_TYPE_VALUE_PLATFORM1 = "platform1";
-	private static final Object TAG_ENTITY_ATTRIBUTE_TYPE_VALUE_PLATFORM2 = "platform2";
-	private static final Object TAG_ENTITY_ATTRIBUTE_TYPE_VALUE_PLATFORM3 = "platform3";
-	private static final Object TAG_ENTITY_ATTRIBUTE_TYPE_VALUE_COIN = "coin";
-	private static final Object TAG_ENTITY_ATTRIBUTE_TYPE_VALUE_PLAYER = "player";
-	private static final Object TAG_ENTITY_ATTRIBUTE_TYPE_VALUE_LEVEL_COMPLETE = "levelComplete";
-	
 	private Player player;
 	
 	private Text gameOverText;
 	private boolean gameOverDisplayed = false;
-	
-	private boolean firstTouch = false;
 	
 	@Override
 	public void createScene()
@@ -56,7 +42,10 @@ public class GameScene extends com.chrisseto.tilttolive.base.BaseScene implement
 		createGameOverText();
 		
 		//levelCompleteWindow = new LevelCompleteWindow(vbom);
+		player = new Player(vbom);
+		
 		Assets.getInstance().sensorManager.registerListener(player, Assets.getInstance().sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),Assets.getInstance().sensorManager.SENSOR_DELAY_GAME);
+		this.attachChild(player);
 		setOnSceneTouchListener(this); 
 	}
 
@@ -122,7 +111,7 @@ public class GameScene extends com.chrisseto.tilttolive.base.BaseScene implement
 	
 	private void createBackground()
 	{
-		setBackground(new Background(Color.BLUE));
+		setBackground(new Background(Color.GREEN));
 	}
 	
 	private void addToScore(int i)

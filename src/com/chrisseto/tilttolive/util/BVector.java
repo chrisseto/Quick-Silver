@@ -4,9 +4,9 @@ import java.text.DecimalFormat;
 
 public class BVector
 {
-	public double x,y;  //This maybe be changed later on
+	public float x,y;  //This maybe be changed later on
 	
-	public BVector(double x, double y)
+	public BVector(float x, float y)
 	{
 		this.x = x;
 		this.y = y;
@@ -16,6 +16,11 @@ public class BVector
 	{
 		this(0,0);
 	}	
+
+	public BVector(double cos, double sin) {
+		this.x = (float)cos;
+		this.y = (float)sin;
+	}
 
 	public void add(BVector other)
 	{
@@ -38,7 +43,7 @@ public class BVector
 		this.x *= scalar;
 		this.y *= scalar;
 	}
-	public static BVector fromAngle(double angle)
+	public static BVector fromAngle(float angle)
 	{
 		return new BVector(Math.cos(angle),Math.sin(angle));	
 	}

@@ -62,6 +62,7 @@ public class MainMenuScene extends com.chrisseto.tilttolive.base.BaseScene imple
 				SceneManager.getInstance().loadGameScene(engine);
 				return true;
 			case MENU_OPTIONS:
+				SceneManager.getInstance().loadGameScene(engine);
 				return true;
 			default:
 				return false;
@@ -99,8 +100,8 @@ public class MainMenuScene extends com.chrisseto.tilttolive.base.BaseScene imple
 		menuChildScene.buildAnimations();
 		menuChildScene.setBackgroundEnabled(false);
 		
-		playMenuItem.setPosition(playMenuItem.getX(), playMenuItem.getY() + 10);
-		optionsMenuItem.setPosition(optionsMenuItem.getX(), optionsMenuItem.getY() - 110);
+		playMenuItem.setPosition(playMenuItem.getX() - 550, playMenuItem.getY() - 360);
+		optionsMenuItem.setPosition(optionsMenuItem.getX() -170, optionsMenuItem.getY() - 280);
 		
 		menuChildScene.setOnMenuItemClickListener(this);
 		
