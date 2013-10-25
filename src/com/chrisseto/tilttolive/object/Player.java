@@ -1,6 +1,10 @@
 package com.chrisseto.tilttolive.object;
 
 import org.andengine.engine.camera.Camera;
+import org.andengine.engine.handler.IUpdateHandler;
+import org.andengine.entity.modifier.IEntityModifier;
+import org.andengine.entity.modifier.LoopEntityModifier;
+import org.andengine.entity.modifier.RotationModifier;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import org.andengine.util.debug.Debug;
 
@@ -24,7 +28,7 @@ public class Player extends Ball implements SensorEventListener
 	
 	public Player(VertexBufferObjectManager vbom,Camera camera)
 	{
-		super(12,12,38,Assets.getInstance().ball_region,vbom,camera);
+		super(12,12,35,Assets.getInstance().ball_region,vbom,camera); //Note to self change player size to 35ish and recreate png
 		hasShield = false;
 		hasSpikes = false;
 		powerUpRadius = 0;
@@ -50,6 +54,16 @@ public class Player extends Ball implements SensorEventListener
 	{
 		super.update();
 		checkBounds();
+		/*
+		float  dx = touchX -  player.getX();
+        float  dy = touchY -  player.getY();
+       
+        double  Radius = Math.atan2(dy,dx);
+        double Angle = Radius * 180 / PI;
+             
+        player.setRotation((float)Angle);
+*/
+		
 	}
 	//For power ups etc
 	//Has another ball "kill zone?"
@@ -76,6 +90,7 @@ public class Player extends Ball implements SensorEventListener
 					System.arraycopy(e.values, 0, accelCal, 0, e.values.length);
 				}
 				setVelocity(new BVector((e.values[1]-accelCal[1])*speed,(-e.values[0]+accelCal[0])*speed));
+				this.setRotation(-(float)Math.toDegrees(Math.atan2(e.values[1]-accelCal[1],e.values[0]-accelCal[0]))-180);//this needs to be smoothed some how
 				update();
 				break;
 			}

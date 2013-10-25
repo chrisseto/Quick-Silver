@@ -10,19 +10,13 @@ import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import com.chrisseto.tilttolive.object.EnemyBall;
 import com.chrisseto.tilttolive.object.Player;
 
-public class EnemyManger implements IUpdateHandler {
-	final Scene parent;
-	final VertexBufferObjectManager vbom;
-	final Camera camera;
+public class EnemyManger extends Manager<EnemyBall>{
 	ArrayList<EnemyBall> reds;
 	final Player player;
 	public EnemyManger(Scene p, VertexBufferObjectManager vbom, Camera camera, Player player)
 	{
-		this.parent = p;
-		this.vbom = vbom;
-		this.camera = camera;
+		super(p, vbom, camera);
 		this.player = player;
-		parent.registerUpdateHandler(this);
 		reds = new ArrayList<EnemyBall>();
 		addEnemy(70,70);
 		addEnemy(20,20);
@@ -32,6 +26,10 @@ public class EnemyManger implements IUpdateHandler {
 		for(EnemyBall b : reds)
 		{
 			b.updateVelocity(reds, player.getPosition());
+			if(b.collidesWith(player))
+			{
+				//Game Over here
+			}
 		}
 		
 	}
@@ -44,5 +42,10 @@ public class EnemyManger implements IUpdateHandler {
 	{
 		reds.add(new EnemyBall(x, y, vbom, camera));
 		this.parent.attachChild(reds.get(reds.size()-1));
+	}
+	@Override
+	public void add(float x, float y) {
+		// TODO Auto-generated method stub
+		
 	}
 }
