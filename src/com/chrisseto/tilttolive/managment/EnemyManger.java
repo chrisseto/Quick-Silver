@@ -25,6 +25,7 @@ public class EnemyManger implements IUpdateHandler {
 		parent.registerUpdateHandler(this);
 		reds = new ArrayList<EnemyBall>();
 		addEnemy(70,70);
+		addEnemy(20,20);
 	}
 	@Override
 	public void onUpdate(float pSecondsElapsed) {

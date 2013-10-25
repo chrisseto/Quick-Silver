@@ -12,8 +12,9 @@ import com.chrisseto.tilttolive.util.BVector;
 
 public class EnemyBall extends Ball
 {
-	float speed;
 	BVector velocity;
+	private static float ATTRACTION = 4;
+	private static float SPEED = 1.5f;
 	public EnemyBall(float x, float y, VertexBufferObjectManager vbom,Camera camera)
 	{
 		super(x,y,20,Assets.getInstance().enemy_region,vbom,camera);
@@ -39,13 +40,32 @@ public class EnemyBall extends Ball
 	private BVector getRepulse(ArrayList<EnemyBall> list)
 	{
 		//TODO
-		BVector temp = new BVector();
-		return temp;
+		BVector vel = new BVector();
+		BVector temp;
+		float dist;
+		for(EnemyBall b : list)
+		{
+		 temp = BVector.sub(getPosition(), b.getPosition());
+		 dist = (float)getPosition().distance(b.getPosition());
+	      if (dist <= 0)
+	      {
+	        temp.div(.00001f);   
+	        temp.mult(ATTRACTION*getSize()/(.000001f*.000001f));
+	      }
+	      else
+	      {
+	        temp.div(dist);   
+	        temp.mult(ATTRACTION*getSize()/(dist*dist));
+	      }
+	      vel.add(temp);
+		}
+		return vel;
 	}
 	private BVector moveToPlayer(BVector player)
 	{
 		 	BVector temp = BVector.sub(player, getPosition());
 		    temp.normalize();
+		    temp.mult(SPEED);
 		    return temp;
 	}
 }

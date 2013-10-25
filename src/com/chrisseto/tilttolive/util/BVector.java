@@ -38,10 +38,15 @@ public class BVector
 		this.x = x;
 		this.y = y;
 	}
-	public void mult(int scalar)
+	public void mult(float speed)
 	{
-		this.x *= scalar;
-		this.y *= scalar;
+		this.x *= speed;
+		this.y *= speed;
+	}
+	public void div(float d)
+	{
+		this.x/=d;
+		this.y/=d;
 	}
 	public static BVector fromAngle(float angle)
 	{

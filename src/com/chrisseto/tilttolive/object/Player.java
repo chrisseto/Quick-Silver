@@ -4,7 +4,6 @@ import org.andengine.engine.camera.Camera;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import org.andengine.util.debug.Debug;
 
-import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -76,12 +75,10 @@ public class Player extends Ball implements SensorEventListener
 					accelCal = new float[3];
 					System.arraycopy(e.values, 0, accelCal, 0, e.values.length);
 				}
-				setVelocity(new BVector((e.values[1]-accelCal[1]),(-e.values[0]+accelCal[0])));//This fill have to be updated * speedMult or something
+				setVelocity(new BVector((e.values[1]-accelCal[1])*speed,(-e.values[0]+accelCal[0])*speed));
 				update();
 				break;
 			}
 		}
-		// TODO Auto-generated method stub
-		
 	}
 }
