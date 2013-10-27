@@ -80,4 +80,6 @@ public abstract class Ball extends Sprite
 		super.setX(position.x);
 		super.setY(position.y);
 	}
+	public boolean collidesWith(Ball other)
+	{return  BVector.sub(this.getPosition(), other.getPosition()).magsq() >= ((size+other.size)/2)*((size+other.size)/2) ? true : false;}
 }

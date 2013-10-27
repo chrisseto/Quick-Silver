@@ -11,12 +11,12 @@ import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.chrisseto.tilttolive.util.Assets;
 
-public abstract class Manager<T> implements IUpdateHandler{
+public abstract class Manager<T extends Ball> implements IUpdateHandler{
 	protected ArrayList<T> list;
 	protected final Scene parent;
 	protected final VertexBufferObjectManager vbom;
 	protected final Camera camera;
-	protected int tRadius,spawnDelay;
+	protected int tRadius,spawnDelay,count;
 	public Manager(Scene p, VertexBufferObjectManager vbom, Camera camera)
 	{
 		parent=p;
@@ -24,6 +24,7 @@ public abstract class Manager<T> implements IUpdateHandler{
 		this.camera = camera;
 		list = new ArrayList<T>();
 		parent.registerUpdateHandler(this);
+		count=0;
 		
 	}
 	
@@ -37,6 +38,22 @@ public abstract class Manager<T> implements IUpdateHandler{
 	public T get(int index)
 	{
 		return list.get(index);
+	}
+	
+	public void remove(T index)
+	{
+		int c = 0;
+		for(T b : list)
+		{
+			if(b.equals(index))
+				list.remove(c);
+			c++;
+		}
+	}
+	
+	public void remove(int index)
+	{
+		list.remove(index);
 	}
 	
 	public abstract float makeNewDelay();

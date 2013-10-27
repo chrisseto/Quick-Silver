@@ -16,6 +16,7 @@ import org.andengine.util.adt.color.Color;
 import android.hardware.Sensor;
 
 import com.chrisseto.tilttolive.managment.EnemyManger;
+import com.chrisseto.tilttolive.managment.PowerUpManger;
 import com.chrisseto.tilttolive.managment.SceneManager;
 import com.chrisseto.tilttolive.managment.SceneManager.SceneType;
 import com.chrisseto.tilttolive.object.Player;
@@ -31,6 +32,7 @@ public class GameScene extends com.chrisseto.tilttolive.base.BaseScene implement
 	
 	private Player player;
 	private EnemyManger enemyManger;
+	private PowerUpManger powerUpManager;
 	
 	private Text gameOverText;
 	private boolean gameOverDisplayed = false;
@@ -50,6 +52,7 @@ public class GameScene extends com.chrisseto.tilttolive.base.BaseScene implement
 		Assets.getInstance().sensorManager.registerListener(player, Assets.getInstance().sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),Assets.getInstance().sensorManager.SENSOR_DELAY_GAME);
 		this.attachChild(player);
 		enemyManger = new EnemyManger(this, vbom, camera, player);
+		powerUpManager = new PowerUpManger(this, vbom, camera, player);
 		setOnSceneTouchListener(this); 
 	}
 

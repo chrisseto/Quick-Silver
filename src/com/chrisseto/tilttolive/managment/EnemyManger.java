@@ -7,6 +7,7 @@ import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import com.chrisseto.tilttolive.base.Manager;
 import com.chrisseto.tilttolive.object.EnemyBall;
 import com.chrisseto.tilttolive.object.Player;
+import com.chrisseto.tilttolive.util.Assets;
 
 public class EnemyManger extends Manager<EnemyBall>{
 	final Player player;
@@ -36,12 +37,16 @@ public class EnemyManger extends Manager<EnemyBall>{
 	public void add(float x, float y) {
 		list.add(new EnemyBall(x, y, vbom, camera));
 		this.parent.attachChild(list.get(list.size()-1));
+		count++;
 		
 	}
 	@Override
 	public float makeNewDelay() {
-		// TODO Auto-generated method stub
-		return 1;
+		//This needs to be better
+		//lower with less on screen
+		//higher with more
+		//faster as time progresses
+		return (float)Assets.random((10/count)+1, (30/count)+2);
 	}
 	@Override
 	public void reset() {

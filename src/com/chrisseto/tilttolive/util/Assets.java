@@ -31,14 +31,6 @@ public class Assets {
 	
 	public static final Assets INSTANCE = new Assets();
 	
-	public static final int WIDTH = 800;
-	public static final int HEIGHT = 800;
-	public static final int PLAYERSIZE = 20;
-	public static final int ENEMYSIZE = 12;
-	public static final int POWERUPSIZE = 19;
-	public static final int SPIKERADIUS = 30;
-	public static final int SHIELDRADIUS = 25;
-	
 	public static float[] ACCELEROMETERCALI;
 	
 	public static double random(double lower, double upper)
@@ -75,13 +67,10 @@ public class Assets {
 	public BuildableBitmapTextureAtlas gameTextureAtlas;
 	
 	// Game Texture Regions
-	public ITextureRegion platform1_region;
-	public ITextureRegion platform2_region;
-	public ITextureRegion platform3_region;
-	public ITextureRegion coin_region;
 	public ITiledTextureRegion player_region;
 	public ITextureRegion ball_region;
 	public ITextureRegion enemy_region;
+	public ITextureRegion explosion_pu;
 	
 	private BitmapTextureAtlas splashTextureAtlas;
 	private BuildableBitmapTextureAtlas menuTextureAtlas;
@@ -148,7 +137,7 @@ public class Assets {
         
        	ball_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "player.png");
        	enemy_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "enemy.png");
-        coin_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "coin.png");
+        explosion_pu = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "explosion.png");
         player_region = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(gameTextureAtlas, activity, "player.png", 3, 1);
         
         complete_window_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "levelCompleteWindow.png");
