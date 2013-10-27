@@ -1,5 +1,7 @@
 package com.chrisseto.tilttolive.managment;
 
+import java.util.Iterator;
+
 import org.andengine.engine.camera.Camera;
 import org.andengine.entity.scene.Scene;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
@@ -28,10 +30,9 @@ public class PowerUpManger extends Manager<DormantPowerUp> {
 
 	@Override
 	public void onUpdate(float pSecondsElapsed) {
-		for (DormantPowerUp b : list) {
-			if (b.collidesWith(player))
-				b.trigger();
-		}
+		for (DormantPowerUp p : list)
+			if (p.collidesWith(player))
+				p.trigger();
 
 	}
 

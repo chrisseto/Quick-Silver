@@ -19,6 +19,7 @@ import com.chrisseto.tilttolive.managment.EnemyManger;
 import com.chrisseto.tilttolive.managment.PowerUpManger;
 import com.chrisseto.tilttolive.managment.SceneManager;
 import com.chrisseto.tilttolive.managment.SceneManager.SceneType;
+import com.chrisseto.tilttolive.object.ExplosionPowerUp;
 import com.chrisseto.tilttolive.object.Player;
 import com.chrisseto.tilttolive.util.Assets;
 
@@ -53,6 +54,7 @@ public class GameScene extends com.chrisseto.tilttolive.base.BaseScene implement
 		this.attachChild(player);
 		enemyManger = new EnemyManger(this, vbom, camera, player);
 		powerUpManager = new PowerUpManger(this, vbom, camera, player);
+		this.attachChild(new ExplosionPowerUp(30, 40, 20, Assets.getInstance().ball_region, vbom, camera));
 		setOnSceneTouchListener(this); 
 	}
 

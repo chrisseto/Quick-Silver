@@ -1,6 +1,7 @@
 package com.chrisseto.tilttolive.base;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import org.andengine.engine.camera.Camera;
 import org.andengine.engine.handler.IUpdateHandler;
@@ -42,13 +43,7 @@ public abstract class Manager<T extends Ball> implements IUpdateHandler{
 	
 	public void remove(T index)
 	{
-		int c = 0;
-		for(T b : list)
-		{
-			if(b.equals(index))
-				list.remove(c);
-			c++;
-		}
+		list.remove(index);
 	}
 	
 	public void remove(int index)
