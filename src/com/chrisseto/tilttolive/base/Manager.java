@@ -9,10 +9,11 @@ import org.andengine.engine.handler.timer.ITimerCallback;
 import org.andengine.engine.handler.timer.TimerHandler;
 import org.andengine.entity.scene.Scene;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
+import org.andengine.util.adt.pool.GenericPool;
 
 import com.chrisseto.tilttolive.util.Assets;
 
-public abstract class Manager<T extends Ball> implements IUpdateHandler{
+public abstract class Manager<T extends Ball> extends GenericPool<T> implements IUpdateHandler{
 	protected ArrayList<T> list;
 	protected final Scene parent;
 	protected final VertexBufferObjectManager vbom;
@@ -27,6 +28,16 @@ public abstract class Manager<T extends Ball> implements IUpdateHandler{
 		parent.registerUpdateHandler(this);
 		count=0;
 		
+	}
+	
+	@Override
+	abstract protected T onAllocatePoolItem();
+	
+	@Override
+	protected void onHandleRecycleItem(final T item)
+	{
+		item.setIgnoreUpdate(true);
+		item.setVisible(false);
 	}
 	
 	public abstract void add(float x, float y);
