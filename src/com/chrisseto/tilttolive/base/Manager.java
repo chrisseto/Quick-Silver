@@ -13,7 +13,7 @@ import org.andengine.util.adt.pool.GenericPool;
 
 import com.chrisseto.tilttolive.util.Assets;
 
-public abstract class Manager<T extends Ball> extends GenericPool<T> implements IUpdateHandler{
+public abstract class Manager<T extends Ball>  implements IUpdateHandler{
 	protected ArrayList<T> list;
 	protected final Scene parent;
 	protected final VertexBufferObjectManager vbom;
@@ -30,21 +30,11 @@ public abstract class Manager<T extends Ball> extends GenericPool<T> implements 
 		
 	}
 	
-	@Override
-	abstract protected T onAllocatePoolItem();
-	
-	@Override
-	protected void onHandleRecycleItem(final T item)
-	{
-		item.setIgnoreUpdate(true);
-		item.setVisible(false);
-	}
-	
 	public abstract void add(float x, float y);
 	
 	public void add()
 	{
-		this.add((float)Assets.random(tRadius, camera.getWidth()),(float)Assets.random(tRadius, camera.getHeight()));
+			this.add((float)Assets.random(tRadius, camera.getWidth()),(float)Assets.random(tRadius, camera.getHeight()));
 	}
 	
 	public T get(int index)
@@ -54,7 +44,13 @@ public abstract class Manager<T extends Ball> extends GenericPool<T> implements 
 	
 	public void remove(T index)
 	{
-		list.remove(index);
+		Iterator<T> i = list.iterator();
+		while(i.hasNext())
+		{
+			T thin = i.next();
+			if(thin.equals(index))
+				i.remove();
+		}
 	}
 	
 	public void remove(int index)
