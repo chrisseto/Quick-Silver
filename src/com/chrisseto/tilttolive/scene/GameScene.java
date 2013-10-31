@@ -1,12 +1,9 @@
 package com.chrisseto.tilttolive.scene;
 
-import java.io.IOException;
-
 import org.andengine.engine.camera.hud.HUD;
 import org.andengine.entity.scene.IOnSceneTouchListener;
 import org.andengine.entity.scene.Scene;
 import org.andengine.entity.scene.background.Background;
-import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.text.Text;
 import org.andengine.entity.text.TextOptions;
 import org.andengine.input.touch.TouchEvent;
@@ -54,7 +51,7 @@ public class GameScene extends com.chrisseto.tilttolive.base.BaseScene implement
 		this.attachChild(player);
 		enemyManger = new EnemyManger(this, vbom, camera, player);
 		powerUpManager = new PowerUpManger(this, vbom, camera, player);
-		this.attachChild(new ExplosionPowerUp(30, 40, 20, Assets.getInstance().ball_region, vbom, camera));
+		this.attachChild(new ExplosionPowerUp(30, 40, 20, Assets.getInstance().explosion_pu, vbom, camera,this));
 		setOnSceneTouchListener(this); 
 	}
 

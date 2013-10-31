@@ -23,6 +23,7 @@ public class EnemyBall extends Ball
 	{
 		//Spawns a Dead Enemy class which is just drawn and faded out
 		//Could probs be done better
+		//Entity modifier would work much better
 	}
 	public void update(float x, float y)
 	{

@@ -4,6 +4,8 @@ import org.andengine.engine.camera.Camera;
 import org.andengine.entity.scene.Scene;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
+import android.os.Debug;
+
 import com.chrisseto.tilttolive.base.Manager;
 import com.chrisseto.tilttolive.object.EnemyBall;
 import com.chrisseto.tilttolive.object.Player;
@@ -38,7 +40,7 @@ public class EnemyManger extends Manager<EnemyBall>{
 		list.add(new EnemyBall(x, y, vbom, camera));
 		this.parent.attachChild(list.get(list.size()-1));
 		count++;
-		
+		org.andengine.util.debug.Debug.d("New enmey at (" + x + ", "+ y + ")" );
 	}
 	@Override
 	public float makeNewDelay() {

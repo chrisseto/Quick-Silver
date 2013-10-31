@@ -5,6 +5,7 @@ import java.util.Iterator;
 import org.andengine.engine.camera.Camera;
 import org.andengine.entity.scene.Scene;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
+import org.andengine.util.debug.Debug;
 
 import com.chrisseto.tilttolive.base.Manager;
 import com.chrisseto.tilttolive.object.DormantPowerUp;
@@ -30,10 +31,19 @@ public class PowerUpManger extends Manager<DormantPowerUp> {
 
 	@Override
 	public void onUpdate(float pSecondsElapsed) {
-		for (DormantPowerUp p : list)
-			if (p.collidesWith(player))
+		Iterator<DormantPowerUp> i = list.iterator();
+		DormantPowerUp p;
+		while(i.hasNext())
+		{
+			p = i.next();
+			if(p.collidesWith(player))
+			{
+				Debug.d("Power Up Triggered at " + p.getPosition().toString() + "by player at " + player.getPosition().toString());
 				p.trigger();
-
+				i.remove();
+			}
+		}
+		
 	}
 
 	@Override

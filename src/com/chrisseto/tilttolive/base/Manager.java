@@ -8,12 +8,14 @@ import org.andengine.engine.handler.IUpdateHandler;
 import org.andengine.engine.handler.timer.ITimerCallback;
 import org.andengine.engine.handler.timer.TimerHandler;
 import org.andengine.entity.scene.Scene;
+import org.andengine.entity.sprite.Sprite;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import org.andengine.util.adt.pool.GenericPool;
 
+import com.chrisseto.tilttolive.object.DormantPowerUp.PowerUpType;
 import com.chrisseto.tilttolive.util.Assets;
 
-public abstract class Manager<T extends Ball>  implements IUpdateHandler{
+public abstract class Manager<T extends Sprite>  implements IUpdateHandler{
 	protected ArrayList<T> list;
 	protected final Scene parent;
 	protected final VertexBufferObjectManager vbom;
@@ -44,13 +46,7 @@ public abstract class Manager<T extends Ball>  implements IUpdateHandler{
 	
 	public void remove(T index)
 	{
-		Iterator<T> i = list.iterator();
-		while(i.hasNext())
-		{
-			T thin = i.next();
-			if(thin.equals(index))
-				i.remove();
-		}
+		parent.detachChild(index);
 	}
 	
 	public void remove(int index)

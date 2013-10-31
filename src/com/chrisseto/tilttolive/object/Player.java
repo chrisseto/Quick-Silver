@@ -28,12 +28,10 @@ public class Player extends Ball implements SensorEventListener
 	
 	public Player(VertexBufferObjectManager vbom,Camera camera)
 	{
-		super(12,12,35,Assets.getInstance().ball_region,vbom,camera); //Note to self change player size to 35ish and recreate png
+		super(camera.getCenterX(),camera.getCenterY(),35,Assets.getInstance().ball_region,vbom,camera); //Note to self change player size to 35ish and recreate png
 		hasShield = false;
 		hasSpikes = false;
 		powerUpRadius = 0;
-		setX(camera.getCenterX());
-		setY(camera.getCenterY());
 		first = true;
 		speed = 1.5f;
 		//init position will always be in the middle of the screen
@@ -43,10 +41,6 @@ public class Player extends Ball implements SensorEventListener
 	{
 		if(hasShield && !hasSpikes)
 			powerUpRadius=0;
-	}
-	public boolean checkCollisionPowerUps(BVector pos)
-	{
-		return false;
 	}
 
 	@Override
