@@ -12,7 +12,7 @@ import org.andengine.entity.sprite.Sprite;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import org.andengine.util.adt.pool.GenericPool;
 
-import com.chrisseto.tilttolive.object.DormantPowerUp.PowerUpType;
+import com.chrisseto.tilttolive.object.powerup.DormantPowerUp.PowerUpType;
 import com.chrisseto.tilttolive.util.Assets;
 
 public abstract class Manager<T extends Sprite>  implements IUpdateHandler{

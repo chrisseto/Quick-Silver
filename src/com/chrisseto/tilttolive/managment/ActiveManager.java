@@ -1,12 +1,15 @@
 package com.chrisseto.tilttolive.managment;
 
+import java.util.Iterator;
+
 import org.andengine.engine.camera.Camera;
 import org.andengine.entity.scene.Scene;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.chrisseto.tilttolive.base.Manager;
 import com.chrisseto.tilttolive.base.PowerUpBase;
-import com.chrisseto.tilttolive.object.DormantPowerUp.PowerUpType;
+import com.chrisseto.tilttolive.object.powerup.ExplosionPowerUp;
+import com.chrisseto.tilttolive.object.powerup.DormantPowerUp.PowerUpType;
 
 public class ActiveManager extends Manager<PowerUpBase> {
 	
@@ -18,7 +21,17 @@ public class ActiveManager extends Manager<PowerUpBase> {
 
 	@Override
 	public void onUpdate(float pSecondsElapsed) {
-		// TODO Auto-generated method stub
+		Iterator<PowerUpBase> it = list.iterator();
+		PowerUpBase base;
+		while(it.hasNext())
+		{
+			base = it.next();
+			base.update();
+			if(base.isFinished())
+				it.remove();
+			//loop through enemies :[
+		}
+		//Collision and other such
 		
 	}
 
@@ -30,7 +43,12 @@ public class ActiveManager extends Manager<PowerUpBase> {
 
 	public void add(float x, float y, PowerUpType type) {
 		
-		// TODO Auto-generated method stub
+		switch(type)
+		{
+		case Explosion:
+			list.add(new ExplosionPowerUp(x, y,  vbom, camera, this));
+			break;
+		}
 		
 	}
 

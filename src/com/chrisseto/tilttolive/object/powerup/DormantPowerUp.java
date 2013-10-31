@@ -1,4 +1,4 @@
-package com.chrisseto.tilttolive.object;
+package com.chrisseto.tilttolive.object.powerup;
 
 import java.util.Random;
 
@@ -15,7 +15,7 @@ public class DormantPowerUp extends Ball {
 
 	PowerUpType type;
 	final PowerUpManger parent;
-
+	
 	public DormantPowerUp(float x, float y, VertexBufferObjectManager vbom,
 			Camera camera, PowerUpType t, ITextureRegion tex,
 			PowerUpManger parent) {
@@ -27,6 +27,7 @@ public class DormantPowerUp extends Ball {
 
 	public void trigger() {
 		// Add effect
+		this.parent.active.add(this.getX(), this.getY(), type);
 		this.parent.remove(this);
 		//Debug.d("Power Up Triggered");
 	}

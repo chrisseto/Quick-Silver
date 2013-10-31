@@ -4,8 +4,8 @@ import org.andengine.engine.camera.Camera;
 import org.andengine.opengl.texture.region.ITextureRegion;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
-import com.chrisseto.tilttolive.object.DormantPowerUp.PowerUpType;
-import com.chrisseto.tilttolive.object.ExplosionPowerUp;
+import com.chrisseto.tilttolive.object.powerup.ExplosionPowerUp;
+import com.chrisseto.tilttolive.object.powerup.DormantPowerUp.PowerUpType;
 
 public class ActivePowerUp extends Ball {
 

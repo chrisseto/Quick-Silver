@@ -8,18 +8,20 @@ import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import org.andengine.util.debug.Debug;
 
 import com.chrisseto.tilttolive.base.Manager;
-import com.chrisseto.tilttolive.object.DormantPowerUp;
 import com.chrisseto.tilttolive.object.Player;
-import com.chrisseto.tilttolive.object.DormantPowerUp.PowerUpType;
+import com.chrisseto.tilttolive.object.powerup.DormantPowerUp;
+import com.chrisseto.tilttolive.object.powerup.DormantPowerUp.PowerUpType;
 
 //and another manager for active powerups? :x
 public class PowerUpManger extends Manager<DormantPowerUp> {
 	final Player player;
-
+	public ActiveManager active;
+	
 	public PowerUpManger(Scene p, VertexBufferObjectManager vbom,
 			Camera camera, Player player) {
 		super(p, vbom, camera);
-
+		
+		active = new ActiveManager(p, vbom, camera);
 		this.player = player;
 		tRadius = 15;
 		this.spawnDelay = 4;

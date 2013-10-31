@@ -1,4 +1,4 @@
-package com.chrisseto.tilttolive.object;
+package com.chrisseto.tilttolive.object.powerup;
 
 import org.andengine.engine.camera.Camera;
 import org.andengine.engine.handler.timer.ITimerCallback;
@@ -7,21 +7,18 @@ import org.andengine.entity.IEntity;
 import org.andengine.entity.modifier.AlphaModifier;
 import org.andengine.entity.modifier.IEntityModifier.IEntityModifierListener;
 import org.andengine.entity.modifier.ScaleModifier;
-import org.andengine.entity.scene.Scene;
-import org.andengine.opengl.texture.region.ITextureRegion;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import org.andengine.util.modifier.IModifier;
 
-import com.chrisseto.tilttolive.base.Ball;
+import com.chrisseto.tilttolive.base.PowerUpBase;
+import com.chrisseto.tilttolive.managment.ActiveManager;
+import com.chrisseto.tilttolive.util.Assets;
 
-public class ExplosionPowerUp extends Ball{
+public class ExplosionPowerUp extends PowerUpBase{
 
-	final Scene parent;
-	public ExplosionPowerUp(float pX, float pY, int size,
-			ITextureRegion pTextureRegion,
-			VertexBufferObjectManager pVertexBufferObjectManager, Camera camera, Scene parent) {
-		super(pX, pY, size, pTextureRegion, pVertexBufferObjectManager, camera);
-		this.parent = parent;
+	public ExplosionPowerUp(float pX, float pY,
+			VertexBufferObjectManager pVertexBufferObjectManager, Camera camera, ActiveManager parent) {
+		super(pX, pY, 20, Assets.getInstance().explosion_pu, pVertexBufferObjectManager, parent, 4);
 		startSpawnTimer();
 		this.setAlpha(.7f);
 		this.registerEntityModifier(new ScaleModifier(2, 1, 4));
@@ -31,10 +28,9 @@ public class ExplosionPowerUp extends Ball{
 	}
 	private void startSpawnTimer()
 	{
-		TimerHandler lifeTime;
-		parent.registerUpdateHandler(
-		lifeTime = new 
-	TimerHandler(5, new ITimerCallback()
+		this.registerUpdateHandler(
+		new 
+	TimerHandler(3, new ITimerCallback()
 		{
 			@Override
 			public void onTimePassed(final TimerHandler pTimerHandler) {
@@ -43,18 +39,10 @@ public class ExplosionPowerUp extends Ball{
 		}));
 	}
 
-	private void finish() {	
-		
-		this.parent.unregisterUpdateHandler(this);
-		this.parent.detachChild(this);
-		this.dispose();
-		 //?
-		
-	}
 	
 	private void beginFade()
 	{
-		this.registerEntityModifier(new AlphaModifier(1,.7f,0,new IEntityModifierListener() {
+		this.registerEntityModifier(new AlphaModifier(1.5f,.7f,0,new IEntityModifierListener() {
 			
 			@Override
 			public void onModifierStarted(IModifier<IEntity> pModifier, IEntity pItem) {
@@ -68,5 +56,20 @@ public class ExplosionPowerUp extends Ball{
 				
 			}
 		}));
+	}
+	@Override
+	protected void finish() {
+		finished = true;
+		this.detachSelf();
+	//	this.parent.unregisterUpdateHandler(this);
+		//this.parent.detachChild(this);
+		this.dispose();
+		 //?
+		
+	}
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
 	}
 }
