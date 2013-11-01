@@ -54,6 +54,11 @@ public abstract class Manager<T extends Sprite>  implements IUpdateHandler{
 		list.remove(index);
 	}
 	
+	public Iterator<T> getIterator()
+	{
+		return list.iterator();
+	}
+	
 	public abstract float makeNewDelay();
 	
 	protected void startSpawnTimer()

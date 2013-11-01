@@ -84,7 +84,7 @@ public class Player extends Ball implements SensorEventListener
 					System.arraycopy(e.values, 0, accelCal, 0, e.values.length);
 				}
 				setVelocity(new BVector((e.values[1]-accelCal[1])*speed,(-e.values[0]+accelCal[0])*speed));
-				this.setRotation(-(float)Math.toDegrees(Math.atan2(e.values[1]-accelCal[1],e.values[0]-accelCal[0]))-180);//this needs to be smoothed some how
+				this.setRotation(-(float)Math.toDegrees(Math.atan2(e.values[1]-accelCal[1],e.values[0]-accelCal[0]))-180);//need a fix for crazy rotation while standing still/flat
 				update();
 				break;
 			}

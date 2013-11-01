@@ -8,27 +8,44 @@ import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.chrisseto.tilttolive.base.Manager;
 import com.chrisseto.tilttolive.base.PowerUpBase;
+import com.chrisseto.tilttolive.object.EnemyBall;
+import com.chrisseto.tilttolive.object.Player;
 import com.chrisseto.tilttolive.object.powerup.ExplosionPowerUp;
 import com.chrisseto.tilttolive.object.powerup.DormantPowerUp.PowerUpType;
 
 public class ActiveManager extends Manager<PowerUpBase> {
 	
+	private EnemyManger enemy;
+	final Player player;
+	
 	public ActiveManager(Scene p, VertexBufferObjectManager vbom,
-			Camera camera) {
+			Camera camera,Player player) {
 		super(p, vbom, camera);
-		// TODO Auto-generated constructor stub
+		this.player = player;
+		enemy = new EnemyManger(p, vbom, camera, player);
 	}
 
 	@Override
 	public void onUpdate(float pSecondsElapsed) {
 		Iterator<PowerUpBase> it = list.iterator();
+		Iterator<EnemyBall> eIt = enemy.getIterator();
 		PowerUpBase base;
+		EnemyBall e;
 		while(it.hasNext())
 		{
 			base = it.next();
 			base.update();
 			if(base.isFinished())
 				it.remove();
+			while(eIt.hasNext())
+			{
+				e = eIt.next();
+				if(base.collidesWith(e))//Overload this to ball check in base class Override in classes like shield etc.
+				{
+					enemy.remove(e);
+					eIt.remove();
+				}
+			}
 			//loop through enemies :[
 		}
 		//Collision and other such
@@ -47,6 +64,7 @@ public class ActiveManager extends Manager<PowerUpBase> {
 		{
 		case Explosion:
 			list.add(new ExplosionPowerUp(x, y,  vbom, camera, this));
+			parent.attachChild(list.get(list.size()));
 			break;
 		}
 		

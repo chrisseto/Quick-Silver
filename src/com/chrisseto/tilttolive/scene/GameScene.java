@@ -49,7 +49,7 @@ public class GameScene extends com.chrisseto.tilttolive.base.BaseScene implement
 		
 		Assets.getInstance().sensorManager.registerListener(player, Assets.getInstance().sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),Assets.getInstance().sensorManager.SENSOR_DELAY_GAME);
 		this.attachChild(player);
-		enemyManger = new EnemyManger(this, vbom, camera, player);
+		//enemyManger = new EnemyManger(this, vbom, camera, player);
 		powerUpManager = new PowerUpManger(this, vbom, camera, player);
 		//this.attachChild(new ExplosionPowerUp(30, 40,  vbom, camera,this));
 		setOnSceneTouchListener(this); 

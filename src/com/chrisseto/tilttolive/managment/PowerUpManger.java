@@ -21,7 +21,7 @@ public class PowerUpManger extends Manager<DormantPowerUp> {
 			Camera camera, Player player) {
 		super(p, vbom, camera);
 		
-		active = new ActiveManager(p, vbom, camera);
+		active = new ActiveManager(p, vbom, camera,player);
 		this.player = player;
 		tRadius = 15;
 		this.spawnDelay = 4;
