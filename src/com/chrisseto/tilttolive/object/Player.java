@@ -29,6 +29,11 @@ public class Player extends Ball implements SensorEventListener
 	public Player(VertexBufferObjectManager vbom,Camera camera)
 	{
 		super(camera.getCenterX(),camera.getCenterY(),35,Assets.getInstance().ball_region,vbom,camera); //Note to self change player size to 35ish and recreate png
+		//Notes on leaking border
+		//Make region larger/smaller?
+		//add transparent edge to png?
+		//try texture packer?
+		//Make sizes power of 2? (Random internet tip)
 		hasShield = false;
 		hasSpikes = false;
 		powerUpRadius = 0;

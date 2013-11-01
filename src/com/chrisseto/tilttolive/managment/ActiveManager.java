@@ -12,6 +12,7 @@ import com.chrisseto.tilttolive.object.EnemyBall;
 import com.chrisseto.tilttolive.object.Player;
 import com.chrisseto.tilttolive.object.powerup.ExplosionPowerUp;
 import com.chrisseto.tilttolive.object.powerup.DormantPowerUp.PowerUpType;
+import com.chrisseto.tilttolive.util.Assets;
 
 public class ActiveManager extends Manager<PowerUpBase> {
 	
@@ -59,15 +60,22 @@ public class ActiveManager extends Manager<PowerUpBase> {
 	}
 
 	public void add(float x, float y, PowerUpType type) {
-		
+
 		switch(type)
 		{
 		case Explosion:
 			list.add(new ExplosionPowerUp(x, y,  vbom, camera, this));
-			parent.attachChild(list.get(list.size()));
+			//parent.attachChild(list.get(list.size()-1));
 			break;
 		}
-		
+		Assets.getInstance().engine.runOnUpdateThread(new Runnable() {
+			
+			@Override
+			public void run() {
+				parent.attachChild(list.get(list.size()-1));
+				
+			}
+		});
 	}
 
 	@Override
@@ -83,4 +91,6 @@ public class ActiveManager extends Manager<PowerUpBase> {
 		return 0;
 	}
 
+	
+	
 }

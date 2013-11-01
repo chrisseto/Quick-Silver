@@ -42,6 +42,7 @@ public class PowerUpManger extends Manager<DormantPowerUp> {
 			{
 				Debug.d("Power Up Triggered at " + p.getPosition().toString() + "by player at " + player.getPosition().toString());
 				p.trigger();
+				//p.detachChild(p);//This isn't properly removing powerups....
 				i.remove();
 			}
 		}

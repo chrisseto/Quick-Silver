@@ -40,7 +40,7 @@ public class EnemyManger extends Manager<EnemyBall>{
 		list.add(new EnemyBall(x, y, vbom, camera));
 		this.parent.attachChild(list.get(list.size()-1));
 		count++;
-		org.andengine.util.debug.Debug.d("New enmey at (" + x + ", "+ y + ")" );
+		org.andengine.util.debug.Debug.d("New enemy at (" + x + ", "+ y + ")" );
 	}
 	@Override
 	public float makeNewDelay() {

@@ -28,7 +28,15 @@ public class DormantPowerUp extends Ball {
 	public void trigger() {
 		// Add effect
 		this.parent.active.add(this.getX(), this.getY(), type);
-		this.parent.remove(this);
+		Assets.getInstance().engine.runOnUpdateThread(new Runnable() {
+			
+			@Override
+			public void run() {
+				detachSelf();
+				
+			}
+		});
+		//this.parent.remove(this);
 		//Debug.d("Power Up Triggered");
 	}
 
