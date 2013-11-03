@@ -7,6 +7,7 @@ import org.andengine.opengl.texture.region.ITextureRegion;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.chrisseto.tilttolive.managment.ActiveManager;
+import com.chrisseto.tilttolive.object.EnemyBall;
 
 public abstract class PowerUpBase extends Sprite{
 	protected boolean finished;
@@ -28,6 +29,7 @@ public abstract class PowerUpBase extends Sprite{
 		return finished;
 	}
 	
+	public abstract boolean collideswith(EnemyBall ball);
 	protected abstract void finish();
 	public abstract void update();
 	
@@ -42,4 +44,5 @@ public abstract class PowerUpBase extends Sprite{
 			}
 		}));
 	}
+	
 }

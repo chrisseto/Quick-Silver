@@ -91,6 +91,9 @@ public class ActiveManager extends Manager<PowerUpBase> {
 		return 0;
 	}
 
-	
+	public Player getPlayer()
+	{
+		return player;
+	}
 	
 }

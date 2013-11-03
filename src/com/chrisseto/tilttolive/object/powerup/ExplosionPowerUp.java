@@ -12,6 +12,7 @@ import org.andengine.util.modifier.IModifier;
 
 import com.chrisseto.tilttolive.base.PowerUpBase;
 import com.chrisseto.tilttolive.managment.ActiveManager;
+import com.chrisseto.tilttolive.object.EnemyBall;
 import com.chrisseto.tilttolive.util.Assets;
 
 public class ExplosionPowerUp extends PowerUpBase{
@@ -67,9 +68,19 @@ public class ExplosionPowerUp extends PowerUpBase{
 		 //?
 		
 	}
+	
+	public float getRadius()
+	{
+		return this.getWidth()/2;
+	}
+	
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
 		
+	}
+	@Override
+	public boolean collideswith(EnemyBall ball) {
+		return (((this.getX() - ball.getX())*(this.getX() - ball.getX()))+((this.getY() - ball.getY())*(this.getY() - ball.getY())))*(((this.getX() - ball.getX())*(this.getX() - ball.getX()))+((this.getY() - ball.getY())*(this.getY() - ball.getY()))) <= (getRadius()+ball.getRadius())*(getRadius()+ball.getRadius());
 	}
 }

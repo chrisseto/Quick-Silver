@@ -55,7 +55,7 @@ public class DormantPowerUp extends Ball {
 			return null;
 		}
 	}
-
+	//Could be a linked list... hmm
 	public enum PowerUpType {
 		Explosion
 	}
