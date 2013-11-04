@@ -9,40 +9,56 @@ import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import com.chrisseto.tilttolive.managment.ActiveManager;
 import com.chrisseto.tilttolive.object.EnemyBall;
 
-public abstract class PowerUpBase extends Sprite{
+//Notes
+//The beginFinish method should always call finish
+//A life of 0 will have no timer
+//and things about how to add new PU's in files
+
+
+public abstract class PowerUpBase extends Sprite {
 	protected boolean finished;
 	private float life;
-	private final ActiveManager parent;
-	
+	protected final ActiveManager parent;
+
 	public PowerUpBase(float pX, float pY, float size,
-			ITextureRegion pTextureRegion,
-			VertexBufferObjectManager vbom, ActiveManager parent, float life) {
+			ITextureRegion pTextureRegion, VertexBufferObjectManager vbom,
+			ActiveManager parent, float life) {
 		super(pX, pY, size, size, pTextureRegion, vbom);
 		finished = false;
 		this.life = life;
 		this.parent = parent;
-		startSpawnTimer();
+		startTimer();
+		start();
 	}
-	
-	public boolean isFinished()
-	{
+
+	public boolean isFinished() {
 		return finished;
 	}
-	
+
 	public abstract boolean collideswith(EnemyBall ball);
-	protected abstract void finish();
+
+	protected abstract void start();
+
+	protected abstract void beginFinish();
+
 	public abstract void update();
-	
-	private void startSpawnTimer()
-	{
-		parent.parent.registerUpdateHandler(new 
-	TimerHandler(life, new ITimerCallback()
-		{
-			@Override
-			public void onTimePassed(final TimerHandler pTimerHandler) {
-				finish();
-			}
-		}));
+
+	public void finish() {
+		finished = true;
+		this.detachSelf();
+		this.dispose();
 	}
-	
+
+	private void startTimer() {
+		if (life > 0)
+			parent.parent.registerUpdateHandler(new TimerHandler(life,
+					new ITimerCallback() {
+						@Override
+						public void onTimePassed(
+								final TimerHandler pTimerHandler) {
+							beginFinish();
+						}
+					}));
+	}
+
 }
