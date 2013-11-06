@@ -4,6 +4,24 @@ TiltToLive
 Tilt to live for android
 
 
+TODO
+====
+* Menu(s)
+* Background
+* Enemy Shapes
+* Enemy algorithm
+* Powerup alogrithm
+
+
+Algorithms
+==========
+
+Enemy-
+
+
+Powerup-
+
+
 
 Power ups
 (*Working, + implemented, - idea)
