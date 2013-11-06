@@ -17,10 +17,12 @@ Algorithms
 ==========
 
 Enemy-
-
+	Arrows
+	Shapes
+	
 
 Powerup-
-
+	chance for certain pu
 
 
 Power ups
