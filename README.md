@@ -63,3 +63,16 @@ Power ups
 -Self cannon
 	Launches player X units
 	leaves burning trail behind?
+-Missiles
+	Spawns X misslies
+	Seek out enemies and explode
+-Flame Thrower
+	Self explanitory
+-Time warp
+	Slows Enemies for X seconds
+-Bomb and or Mines
+	Just a thought
+-Player Sweep
+	Swinging Blade or Laser?
+	Sweeps around player
+	Kills anything hit
