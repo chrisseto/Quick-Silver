@@ -8,6 +8,7 @@ import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.chrisseto.tilttolive.managment.ActiveManager;
 import com.chrisseto.tilttolive.object.EnemyBall;
+import com.chrisseto.tilttolive.util.Assets;
 
 //Notes
 //The beginFinish method should always call finish
@@ -45,7 +46,14 @@ public abstract class PowerUpBase extends Sprite {
 
 	public void finish() {
 		finished = true;
-		this.detachSelf();
+		Assets.getInstance().engine.runOnUpdateThread(new Runnable() {
+			
+			@Override
+			public void run() {
+				detachSelf();
+			}
+		});
+		//
 		this.dispose();
 	}
 

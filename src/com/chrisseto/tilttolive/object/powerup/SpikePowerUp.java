@@ -3,21 +3,21 @@ package com.chrisseto.tilttolive.object.powerup;
 import org.andengine.entity.IEntity;
 import org.andengine.entity.modifier.ScaleModifier;
 import org.andengine.entity.modifier.IEntityModifier.IEntityModifierListener;
-import org.andengine.opengl.texture.region.ITextureRegion;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import org.andengine.util.modifier.IModifier;
 
 import com.chrisseto.tilttolive.base.PowerUpBase;
 import com.chrisseto.tilttolive.managment.ActiveManager;
 import com.chrisseto.tilttolive.object.EnemyBall;
+import com.chrisseto.tilttolive.util.Assets;
 
 public class SpikePowerUp extends PowerUpBase {
 
-	public SpikePowerUp(float pX, float pY, float size,
-			ITextureRegion pTextureRegion, VertexBufferObjectManager vbom,
+	public SpikePowerUp(float pX, float pY,
+		 VertexBufferObjectManager vbom,
 			ActiveManager parent) {
 		super(parent.getPlayer().getX(), parent.getPlayer().getY(), 45,
-				pTextureRegion, vbom, parent, 5);
+				Assets.getInstance().explosion_pu, vbom, parent, 5);
 	}
 
 	@Override

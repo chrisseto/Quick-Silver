@@ -1,8 +1,5 @@
 package com.chrisseto.tilttolive.object.powerup;
 
-import org.andengine.engine.camera.Camera;
-import org.andengine.engine.handler.timer.ITimerCallback;
-import org.andengine.engine.handler.timer.TimerHandler;
 import org.andengine.entity.IEntity;
 import org.andengine.entity.modifier.AlphaModifier;
 import org.andengine.entity.modifier.IEntityModifier.IEntityModifierListener;
@@ -19,7 +16,7 @@ public class ExplosionPowerUp extends PowerUpBase {
 
 	public ExplosionPowerUp(float pX, float pY,
 			VertexBufferObjectManager pVertexBufferObjectManager,
-			Camera camera, ActiveManager parent) {
+		 ActiveManager parent) {
 		super(pX, pY, 20, Assets.getInstance().explosion_pu,
 				pVertexBufferObjectManager, parent, 4);
 		// Fade out

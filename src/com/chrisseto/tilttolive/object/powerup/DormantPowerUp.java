@@ -5,7 +5,6 @@ import java.util.Random;
 import org.andengine.engine.camera.Camera;
 import org.andengine.opengl.texture.region.ITextureRegion;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
-import org.andengine.util.debug.Debug;
 
 import com.chrisseto.tilttolive.base.Ball;
 import com.chrisseto.tilttolive.managment.PowerUpManger;
@@ -52,11 +51,13 @@ public class DormantPowerUp extends Ball {
 		case Explosion:
 			return Assets.getInstance().explosion_pu;
 		default:
-			return null;
+			return  Assets.getInstance().explosion_pu;
 		}
 	}
 	//Could be a linked list... hmm
 	public enum PowerUpType {
-		Explosion
+		Explosion,
+		Shield,
+		Spikes
 	}
 }

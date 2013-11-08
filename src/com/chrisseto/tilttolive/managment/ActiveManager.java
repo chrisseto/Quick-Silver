@@ -11,7 +11,9 @@ import com.chrisseto.tilttolive.base.PowerUpBase;
 import com.chrisseto.tilttolive.object.EnemyBall;
 import com.chrisseto.tilttolive.object.Player;
 import com.chrisseto.tilttolive.object.powerup.ExplosionPowerUp;
+import com.chrisseto.tilttolive.object.powerup.ShieldPowerUp;
 import com.chrisseto.tilttolive.object.powerup.DormantPowerUp.PowerUpType;
+import com.chrisseto.tilttolive.object.powerup.SpikePowerUp;
 import com.chrisseto.tilttolive.util.Assets;
 
 public class ActiveManager extends Manager<PowerUpBase> {
@@ -64,8 +66,13 @@ public class ActiveManager extends Manager<PowerUpBase> {
 		switch(type)
 		{
 		case Explosion:
-			list.add(new ExplosionPowerUp(x, y,  vbom, camera, this));
-			//parent.attachChild(list.get(list.size()-1));
+			list.add(new ExplosionPowerUp(x, y,  vbom, this));
+			break;
+		case Shield:
+			list.add(new ShieldPowerUp(x, y, vbom, this));
+			break;
+		case Spikes:
+			list.add(new SpikePowerUp(x, y, vbom, this));
 			break;
 		}
 		Assets.getInstance().engine.runOnUpdateThread(new Runnable() {

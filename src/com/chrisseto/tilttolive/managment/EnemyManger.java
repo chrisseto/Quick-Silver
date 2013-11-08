@@ -4,8 +4,6 @@ import org.andengine.engine.camera.Camera;
 import org.andengine.entity.scene.Scene;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
-import android.os.Debug;
-
 import com.chrisseto.tilttolive.base.Manager;
 import com.chrisseto.tilttolive.object.EnemyBall;
 import com.chrisseto.tilttolive.object.Player;
@@ -41,6 +39,22 @@ public class EnemyManger extends Manager<EnemyBall>{
 		this.parent.attachChild(list.get(list.size()-1));
 		count++;
 		org.andengine.util.debug.Debug.d("New enemy at (" + x + ", "+ y + ")" );
+	}
+	public void spawnCircle(float x, float y, float radius)
+	{
+		
+	}
+	public void spawnLine(float x1, float y1, float x2, float y2)
+	{
+		
+	}
+	public void spawnTriangle(float x, float y, float side)
+	{
+		
+	}
+	public void spawnRectangle(float x, float y, float height, float width)
+	{
+		
 	}
 	@Override
 	public float makeNewDelay() {

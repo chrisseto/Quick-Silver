@@ -41,7 +41,7 @@ Power ups
 	shield around player
 	breaks and kills on touch
 -Blast
-	Shoots a project tile in the direction of the player
+	Shoots a projectile in the direction of the player
 	goes until completely off screen
 -Pulse
 	super power up
