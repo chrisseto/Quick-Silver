@@ -1,5 +1,7 @@
 package com.chrisseto.tilttolive.scene;
 
+import java.text.DecimalFormat;
+
 import org.andengine.engine.camera.hud.HUD;
 import org.andengine.entity.scene.IOnSceneTouchListener;
 import org.andengine.entity.scene.Scene;
@@ -20,110 +22,105 @@ import com.chrisseto.tilttolive.object.Player;
 import com.chrisseto.tilttolive.object.powerup.ExplosionPowerUp;
 import com.chrisseto.tilttolive.util.Assets;
 
-
-public class GameScene extends com.chrisseto.tilttolive.base.BaseScene implements IOnSceneTouchListener
-{
+public class GameScene extends com.chrisseto.tilttolive.base.BaseScene
+		implements IOnSceneTouchListener {
 	private int score = 0;
-	
+	private double mult = 1;
+
 	private HUD gameHUD;
 	private Text scoreText;
-	
+
 	private Player player;
-	private EnemyManger enemyManger;
 	private PowerUpManger powerUpManager;
-	
+
 	private Text gameOverText;
 	private boolean gameOverDisplayed = false;
-	
+
 	@Override
-	public void createScene()
-	{
+	public void createScene() {
 		createBackground();
 		createHUD();
 		loadLevel(1);
 		createGameOverText();
-		
-		//levelCompleteWindow = new LevelCompleteWindow(vbom);
-		player = new Player(vbom,camera);
-		
-		
-		Assets.getInstance().sensorManager.registerListener(player, Assets.getInstance().sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),Assets.getInstance().sensorManager.SENSOR_DELAY_GAME);
+
+		// levelCompleteWindow = new LevelCompleteWindow(vbom);
+		player = new Player(vbom, camera);
+
+		Assets.getInstance().sensorManager.registerListener(player, Assets
+				.getInstance().sensorManager
+				.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), Assets
+				.getInstance().sensorManager.SENSOR_DELAY_GAME);
 		this.attachChild(player);
-		//enemyManger = new EnemyManger(this, vbom, camera, player);
+		// enemyManger = new EnemyManger(this, vbom, camera, player);
 		powerUpManager = new PowerUpManger(this, vbom, camera, player);
-		//this.attachChild(new ExplosionPowerUp(30, 40,  vbom, camera,this));
-		setOnSceneTouchListener(this); 
+		setOnSceneTouchListener(this);
 	}
 
 	@Override
-	public void onBackKeyPressed()
-	{
+	public void onBackKeyPressed() {
 		SceneManager.getInstance().loadMenuScene(engine);
 	}
 
 	@Override
-	public SceneType getSceneType()
-	{
+	public SceneType getSceneType() {
 		return SceneType.SCENE_GAME;
 	}
 
 	@Override
-	public void disposeScene()
-	{
+	public void disposeScene() {
 		camera.setHUD(null);
-		camera.setChaseEntity(null); //TODO
+		camera.setChaseEntity(null); // TODO
 		camera.setCenter(400, 240);
-		
+
 		// TODO code responsible for disposing scene
 		// removing all game scene objects.
 	}
-	
-	public boolean onSceneTouchEvent(Scene pScene, TouchEvent pSceneTouchEvent)
-	{
-		//TODO Put somthing in here
+
+	public boolean onSceneTouchEvent(Scene pScene, TouchEvent pSceneTouchEvent) {
+		// TODO Put somthing in here
 		return false;
 	}
-	
-	private void loadLevel(int levelID)
-	{
-		//Might need something here in the future
-		//Difficulty? eh
+
+	private void loadLevel(int levelID) {
+		// Might need something here in the future
+		// Difficulty? eh
 	}
-	
-	private void createGameOverText()
-	{
+
+	private void createGameOverText() {
 		gameOverText = new Text(0, 0, resourcesManager.font, "Game Over!", vbom);
 	}
-	
-	private void displayGameOverText()
-	{
+
+	private void displayGameOverText() {
 		camera.setChaseEntity(null);
 		gameOverText.setPosition(camera.getCenterX(), camera.getCenterY());
 		attachChild(gameOverText);
 		gameOverDisplayed = true;
 	}
-	
-	private void createHUD()
-	{
+
+	private void createHUD() {
 		gameHUD = new HUD();
-		
-		scoreText = new Text(20, 420, resourcesManager.font, "Score: 0123456789", new TextOptions(HorizontalAlign.LEFT), vbom);
-		scoreText.setAnchorCenter(0, 0);	
+
+		scoreText = new Text(20, 420, resourcesManager.font,
+				"Score: 0123456789", new TextOptions(HorizontalAlign.LEFT),
+				vbom);
+		scoreText.setAnchorCenter(0, 0);
 		scoreText.setText("Score: 0");
 		gameHUD.attachChild(scoreText);
-		
+
 		camera.setHUD(gameHUD);
 	}
-	
-	private void createBackground()
-	{
-		setBackground(new Background(Color.GREEN));
+
+	private void createBackground() {
+		setBackground(new Background(Color.CYAN));
 	}
-	
-	private void addToScore(int i)
-	{
-		score += i;
+
+	public void addToScore(boolean mul) {
+		if (mul)
+			mult += 1;
+		else
+			mult = 1;
+		score += mult;
 		scoreText.setText("Score: " + score);
 	}
-	
+
 }

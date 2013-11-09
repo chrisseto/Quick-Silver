@@ -15,17 +15,20 @@ import com.chrisseto.tilttolive.object.powerup.ShieldPowerUp;
 import com.chrisseto.tilttolive.object.powerup.DormantPowerUp.PowerUpType;
 import com.chrisseto.tilttolive.object.powerup.SpikePowerUp;
 import com.chrisseto.tilttolive.util.Assets;
+import com.chrisseto.tilttolive.scene.GameScene;
 
 public class ActiveManager extends Manager<PowerUpBase> {
 	
 	private EnemyManger enemy;
 	final Player player;
+	private boolean hit;
 	
 	public ActiveManager(Scene p, VertexBufferObjectManager vbom,
 			Camera camera,Player player) {
 		super(p, vbom, camera);
 		this.player = player;
 		enemy = new EnemyManger(p, vbom, camera, player);
+		hit = false;
 	}
 
 	@Override
@@ -34,6 +37,7 @@ public class ActiveManager extends Manager<PowerUpBase> {
 		Iterator<EnemyBall> eIt = enemy.getIterator();
 		PowerUpBase base;
 		EnemyBall e;
+		hit = false;
 		while(it.hasNext())
 		{
 			base = it.next();
@@ -45,8 +49,10 @@ public class ActiveManager extends Manager<PowerUpBase> {
 				e = eIt.next();
 				if(base.collidesWith(e))//Overload this to ball check in base class Override in classes like shield etc.
 				{
+					hit = true;
 					e.die();
 					//enemy.remove(e);
+					((GameScene)parent).addToScore(hit);
 					eIt.remove();
 				}
 			}
