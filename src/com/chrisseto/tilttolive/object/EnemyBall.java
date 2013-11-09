@@ -3,7 +3,11 @@ package com.chrisseto.tilttolive.object;
 import java.util.ArrayList;
 
 import org.andengine.engine.camera.Camera;
+import org.andengine.entity.IEntity;
+import org.andengine.entity.modifier.AlphaModifier;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
+import org.andengine.util.modifier.IModifier;
+import org.andengine.entity.modifier.IEntityModifier.IEntityModifierListener;
 
 import com.chrisseto.tilttolive.base.Ball;
 import com.chrisseto.tilttolive.util.Assets;
@@ -21,6 +25,28 @@ public class EnemyBall extends Ball
 	}
 	public void die()
 	{
+		unregisterUpdateHandler(getRootEntity());
+		this.registerEntityModifier(new AlphaModifier(.5f, 1, 0, new IEntityModifierListener() {
+			
+			@Override
+			public void onModifierStarted(IModifier<IEntity> pModifier, IEntity pItem) {
+				
+				
+			}
+			
+			@Override
+			public void onModifierFinished(IModifier<IEntity> pModifier, IEntity pItem) {
+				// TODO Auto-generated method stub
+				Assets.getInstance().engine.runOnUpdateThread(new Runnable() {
+					
+					@Override
+					public void run() {
+						detachSelf();
+						
+					}
+				});
+			}
+		}));
 		//Spawns a Dead Enemy class which is just drawn and faded out
 		//Could probs be done better
 		//Entity modifier would work much better

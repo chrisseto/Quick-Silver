@@ -45,7 +45,8 @@ public class ActiveManager extends Manager<PowerUpBase> {
 				e = eIt.next();
 				if(base.collidesWith(e))//Overload this to ball check in base class Override in classes like shield etc.
 				{
-					enemy.remove(e);
+					e.die();
+					//enemy.remove(e);
 					eIt.remove();
 				}
 			}

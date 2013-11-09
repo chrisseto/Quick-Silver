@@ -67,7 +67,6 @@ public class Assets {
 	public BuildableBitmapTextureAtlas gameTextureAtlas;
 	
 	// Game Texture Regions
-	public ITiledTextureRegion player_region;
 	public ITextureRegion ball_region;
 	public ITextureRegion enemy_region;
 	public ITextureRegion explosion_pu;
@@ -133,6 +132,7 @@ public class Assets {
 	}
 
 	private void loadGameGraphics()
+	
 	{
 		BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/game/");
         gameTextureAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 1024, 1024, TextureOptions.BILINEAR);
@@ -140,7 +140,6 @@ public class Assets {
        	ball_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "player.png");
        	enemy_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "enemy.png");
         explosion_pu = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "explosion.png");
-        player_region = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(gameTextureAtlas, activity, "player.png", 3, 1);
         spike_pu = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "spikepu.png");
         shield_pu = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "shieldpu.png");
         

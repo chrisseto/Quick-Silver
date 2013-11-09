@@ -29,15 +29,17 @@ Enemy-
 Powerup-
 	chance for certain pu
 
+(collision detection may need some work)
+
 
 Power ups
 (*Working, + implemented, - idea)
 *Explosion
 	does what it sounds like
-+Spikes
+*Spikes
 	Revolves around player
 	kills anything it touches
-+Shield
+*Shield
 	shield around player
 	breaks and kills on touch
 -Blast
