@@ -28,7 +28,7 @@ public class ShieldPowerUp extends PowerUpBase {
 
 	@Override
 	protected void start() {
-		this.setAlpha(.7f);
+		this.setAlpha(.5f);
 		
 	}
 
@@ -51,17 +51,10 @@ public class ShieldPowerUp extends PowerUpBase {
 		
 	}
 	
-	public float getRadius() {
-		return this.getWidth() / 2;
-	}
 	
 	@Override
-	public boolean collideswith(EnemyBall ball) {
-		if ((((this.getX() - ball.getX()) * (this.getX() - ball.getX())) + ((this
-				.getY() - ball.getY()) * (this.getY() - ball.getY())))
-				* (((this.getX() - ball.getX()) * (this.getX() - ball.getX())) + ((this
-						.getY() - ball.getY()) * (this.getY() - ball.getY()))) <= (getRadius() + ball
-				.getRadius()) * (getRadius() + ball.getRadius()))
+	public boolean collidesWith(EnemyBall ball) {
+		if(super.collidesWith(ball))
 		{
 			beginFinish();
 			return true;

@@ -36,8 +36,19 @@ public abstract class PowerUpBase extends Sprite {
 		return finished;
 	}
 
-	public abstract boolean collideswith(EnemyBall ball);
-
+	public boolean collidesWith(EnemyBall ball) {
+		
+		return (
+				((getX()-ball.getX()) * (getX()-ball.getX())) 
+				+ ((getY()-ball.getY())*(getY()-ball.getY())) 
+				<= ((getRadius() + ball.getRadius()) * (getRadius() + ball.getRadius())));
+	}
+	
+	public float getRadius()
+	{
+		return this.getScaleX()*this.getWidth()/2;
+	}
+	
 	protected abstract void start();
 
 	protected abstract void beginFinish();

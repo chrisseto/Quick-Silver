@@ -8,7 +8,6 @@ import org.andengine.util.modifier.IModifier;
 
 import com.chrisseto.tilttolive.base.PowerUpBase;
 import com.chrisseto.tilttolive.managment.ActiveManager;
-import com.chrisseto.tilttolive.object.EnemyBall;
 import com.chrisseto.tilttolive.util.Assets;
 
 public class SpikePowerUp extends PowerUpBase {
@@ -18,19 +17,6 @@ public class SpikePowerUp extends PowerUpBase {
 			ActiveManager parent) {
 		super(parent.getPlayer().getX(), parent.getPlayer().getY(), 45,
 				Assets.getInstance().explosion_pu, vbom, parent, 5);
-	}
-
-	@Override
-	public boolean collideswith(EnemyBall ball) {
-		return (((this.getX() - ball.getX()) * (this.getX() - ball.getX())) + ((this
-				.getY() - ball.getY()) * (this.getY() - ball.getY())))
-				* (((this.getX() - ball.getX()) * (this.getX() - ball.getX())) + ((this
-						.getY() - ball.getY()) * (this.getY() - ball.getY()))) <= (getRadius() + ball
-				.getRadius()) * (getRadius() + ball.getRadius());
-	}
-
-	public float getRadius() {
-		return this.getWidth() / 2;
 	}
 
 	@Override
