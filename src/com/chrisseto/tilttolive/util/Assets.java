@@ -60,9 +60,8 @@ public class Assets {
 	
 	public ITextureRegion splash_region;
 	public ITextureRegion menu_background_region;
-	public ITextureRegion play_region;
-	public ITextureRegion options_region;
 	public ITiledTextureRegion buttons;
+	public ITextureRegion play_menu;
 	
 	// Game Texture
 	public BuildableBitmapTextureAtlas gameTextureAtlas;
@@ -74,6 +73,7 @@ public class Assets {
 	public ITextureRegion spike_pu;
 	public ITextureRegion shield_pu;
 	public ITextureRegion shield;
+	public ITextureRegion game_background;
 	
 	private BitmapTextureAtlas splashTextureAtlas;
 	private BuildableBitmapTextureAtlas menuTextureAtlas;
@@ -104,10 +104,9 @@ public class Assets {
 	{
 		BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/menu/");
         menuTextureAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 1024, 1024, TextureOptions.BILINEAR);
-        menu_background_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(menuTextureAtlas, activity, "Background.png");
-        play_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(menuTextureAtlas, activity, "play.png");
-        options_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(menuTextureAtlas, activity, "options.png");
-        buttons = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(menuTextureAtlas, activity, "buttons.png",3,1);
+        menu_background_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(menuTextureAtlas, activity, "background.png");
+        buttons = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(menuTextureAtlas, activity, "buttons.png",1,3);
+        play_menu = BitmapTextureAtlasTextureRegionFactory.createFromAsset(menuTextureAtlas, activity, "Play Menu.png");
     	try 
     	{
 			this.menuTextureAtlas.build(new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 0));
@@ -139,6 +138,7 @@ public class Assets {
 		BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/game/");
         gameTextureAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 1024, 1024, TextureOptions.BILINEAR);
         
+        game_background = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "Field.png");
        	ball_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "player.png");
        	enemy_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "enemy.png");
         explosion_pu = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "explosion.png");

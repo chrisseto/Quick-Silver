@@ -2,13 +2,16 @@ package com.chrisseto.tilttolive.scene;
 
 import java.text.DecimalFormat;
 
+import org.andengine.engine.camera.Camera;
 import org.andengine.engine.camera.hud.HUD;
 import org.andengine.entity.scene.IOnSceneTouchListener;
 import org.andengine.entity.scene.Scene;
 import org.andengine.entity.scene.background.Background;
+import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.text.Text;
 import org.andengine.entity.text.TextOptions;
 import org.andengine.input.touch.TouchEvent;
+import org.andengine.opengl.util.GLState;
 import org.andengine.util.adt.align.HorizontalAlign;
 import org.andengine.util.adt.color.Color;
 
@@ -111,7 +114,16 @@ public class GameScene extends com.chrisseto.tilttolive.base.BaseScene
 	}
 
 	private void createBackground() {
-		setBackground(new Background(Color.CYAN));
+		
+		attachChild(new Sprite(400, 240, resourcesManager.game_background, vbom)
+		{
+    		@Override
+            protected void preDraw(GLState pGLState, Camera pCamera) 
+    		{
+                super.preDraw(pGLState, pCamera);
+                pGLState.enableDither();
+            }
+		});
 	}
 
 	public void addToScore(boolean mul) {
