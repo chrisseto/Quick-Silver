@@ -18,8 +18,6 @@ import org.andengine.util.debug.Debug;
 import com.chrisseto.quicksilver.base.BaseScene;
 import com.chrisseto.quicksilver.managment.SceneManager;
 import com.chrisseto.quicksilver.util.Assets;
-import com.chrisseto.tilttolive.R;
-
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
