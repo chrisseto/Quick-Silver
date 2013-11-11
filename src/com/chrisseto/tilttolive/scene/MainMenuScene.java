@@ -13,14 +13,13 @@ import org.andengine.entity.modifier.IEntityModifier.IEntityModifierListener;
 import com.chrisseto.tilttolive.managment.SceneManager;
 import com.chrisseto.tilttolive.managment.SceneManager.SceneType;
 import com.chrisseto.tilttolive.util.Assets;
-import com.chrisseto.tilttolive.util.HeightModifier;
 
 public class MainMenuScene extends com.chrisseto.tilttolive.base.BaseScene {
 	// ---------------------------------------------
 	// VARIABLES
 	// ---------------------------------------------
 	private TiledSprite buttons;
-	private Sprite play_menu;
+	private Sprite play_menu,menu_select,overlay;
 	private boolean play, options, raised;
 
 	// ---------------------------------------------
@@ -66,12 +65,43 @@ public class MainMenuScene extends com.chrisseto.tilttolive.base.BaseScene {
 		play = false;
 		options = false;
 		raised = false;
+		//overlay = new Sprite(400, 240, Assets.getInstance().menu_overlay, vbom);
+		//overlay.setAlpha(0);
+		menu_select = new Sprite(193,100, Assets.getInstance().menu_select,vbom);
+		menu_select.setVisible(false);
 		// 0-199 = play
 		// 200-400 = options
 		// 278 139
-		play_menu = new Sprite(400, -139, Assets.getInstance().play_menu, vbom);
-		// play_menu.setHeight(0);
-		this.attachChild(play_menu);
+		play_menu = new Sprite(400, -139, Assets.getInstance().play_menu, vbom) {
+			@Override
+			public boolean onAreaTouched(final TouchEvent pAreaTouchEvent, final float pTouchAreaLocalX, final float pTouchAreaLocalY){
+				if(pAreaTouchEvent.getAction() == TouchEvent.ACTION_DOWN)
+				{
+					
+				if(pTouchAreaLocalY > 69*2)
+					menu_select.setY(190);
+				else if(pTouchAreaLocalY > 69)
+					menu_select.setY(115);
+				else
+					menu_select.setY(41);
+					
+				menu_select.setVisible(true);
+				}
+				else
+				{
+					if(pTouchAreaLocalY > 69*2)
+						SceneManager.getInstance().loadGameScene(engine);
+				//	else if(pTouchAreaLocalY > 69)  Time attack mode?
+					//	menu_select.setY(115);
+					//else
+						//menu_select.setY(41); //Some other future mode?
+					menu_select.setVisible(false);
+				}
+				return true;
+				//// SceneManager.getInstance().loadGameScene(engine);
+			}
+		};
+		play_menu.attachChild(menu_select);
 
 		buttons = new TiledSprite(400, 120, Assets.getInstance().buttons, vbom) {
 			@Override
@@ -110,6 +140,8 @@ public class MainMenuScene extends com.chrisseto.tilttolive.base.BaseScene {
 
 							}
 						}));
+						
+						//overlay.registerEntityModifier(new AlphaModifier(.25f, 0, 1));
 						return true;
 					}
 					
@@ -130,6 +162,7 @@ public class MainMenuScene extends com.chrisseto.tilttolive.base.BaseScene {
 									{
 									play = false;
 									raised = false;
+									//overlay.registerEntityModifier(new AlphaModifier(.25f, 1, 0));
 									buttons.registerEntityModifier(new MoveYModifier(.25f, 250, 120));
 									}
 									else
@@ -153,7 +186,14 @@ public class MainMenuScene extends com.chrisseto.tilttolive.base.BaseScene {
 
 			}
 		};
+		
+		//this.attachChild(overlay);
+		
 		this.registerTouchArea(buttons);
+		this.registerTouchArea(play_menu);
+		this.attachChild(play_menu);
+		
+		
 		this.attachChild(buttons);
 	}
 	

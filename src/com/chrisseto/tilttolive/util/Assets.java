@@ -62,6 +62,8 @@ public class Assets {
 	public ITextureRegion menu_background_region;
 	public ITiledTextureRegion buttons;
 	public ITextureRegion play_menu;
+	public ITextureRegion menu_select;
+	public ITextureRegion menu_overlay;
 	
 	// Game Texture
 	public BuildableBitmapTextureAtlas gameTextureAtlas;
@@ -107,6 +109,8 @@ public class Assets {
         menu_background_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(menuTextureAtlas, activity, "background.png");
         buttons = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(menuTextureAtlas, activity, "buttons.png",1,3);
         play_menu = BitmapTextureAtlasTextureRegionFactory.createFromAsset(menuTextureAtlas, activity, "Play Menu.png");
+        menu_select = BitmapTextureAtlasTextureRegionFactory.createFromAsset(menuTextureAtlas, activity, "menu_select.png");
+        //menu_overlay = BitmapTextureAtlasTextureRegionFactory.createFromAsset(menuTextureAtlas, activity, "Overlay.png");
     	try 
     	{
 			this.menuTextureAtlas.build(new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 0));
@@ -139,14 +143,14 @@ public class Assets {
         gameTextureAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 1024, 1024, TextureOptions.BILINEAR);
         
         game_background = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "Field.png");
-       	ball_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "player.png");
+       	ball_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "Player.png");
        	enemy_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "enemy.png");
-        explosion_pu = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "explosion.png");
-        spike_pu = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "spikepu.png");
-        shield_pu = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "shieldpu.png");
+        explosion_pu = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "Explosion Orb.png");
+        spike_pu = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "Spike Orb.png");
+        shield_pu = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "Shield Orb.png");
         shield = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "shield.png");
         
-        complete_window_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "levelCompleteWindow.png");
+       // complete_window_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "levelCompleteWindow.png");
 
     	try 
     	{

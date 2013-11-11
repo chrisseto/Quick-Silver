@@ -22,7 +22,6 @@ import com.chrisseto.tilttolive.managment.PowerUpManger;
 import com.chrisseto.tilttolive.managment.SceneManager;
 import com.chrisseto.tilttolive.managment.SceneManager.SceneType;
 import com.chrisseto.tilttolive.object.Player;
-import com.chrisseto.tilttolive.object.powerup.ExplosionPowerUp;
 import com.chrisseto.tilttolive.util.Assets;
 
 public class GameScene extends com.chrisseto.tilttolive.base.BaseScene
