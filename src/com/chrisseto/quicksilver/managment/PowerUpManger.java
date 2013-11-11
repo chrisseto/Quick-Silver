@@ -1,4 +1,4 @@
-package com.chrisseto.tilttolive.managment;
+package com.chrisseto.quicksilver.managment;
 
 import java.util.Iterator;
 
@@ -7,10 +7,10 @@ import org.andengine.entity.scene.Scene;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import org.andengine.util.debug.Debug;
 
-import com.chrisseto.tilttolive.base.Manager;
-import com.chrisseto.tilttolive.object.Player;
-import com.chrisseto.tilttolive.object.powerup.DormantPowerUp;
-import com.chrisseto.tilttolive.object.powerup.DormantPowerUp.PowerUpType;
+import com.chrisseto.quicksilver.base.Manager;
+import com.chrisseto.quicksilver.object.Player;
+import com.chrisseto.quicksilver.object.powerup.DormantPowerUp;
+import com.chrisseto.quicksilver.object.powerup.DormantPowerUp.PowerUpType;
 
 //and another manager for active powerups? :x
 public class PowerUpManger extends Manager<DormantPowerUp> {

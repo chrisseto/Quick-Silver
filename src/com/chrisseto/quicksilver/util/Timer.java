@@ -1,4 +1,4 @@
-package com.chrisseto.tilttolive.util;
+package com.chrisseto.quicksilver.util;
 
 //Timer.java Timer class for Explosions PowerUps etc
 //May or may not work depending on host device -Worked Fine on my PC but meant for android

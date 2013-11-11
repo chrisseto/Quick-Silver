@@ -1,11 +1,11 @@
-package com.chrisseto.tilttolive.scene;
+package com.chrisseto.quicksilver.scene;
 
 import org.andengine.entity.scene.background.Background;
 import org.andengine.entity.text.Text;
 import org.andengine.util.adt.color.Color;
 
-import com.chrisseto.tilttolive.base.BaseScene;
-import com.chrisseto.tilttolive.managment.SceneManager.SceneType;
+import com.chrisseto.quicksilver.base.BaseScene;
+import com.chrisseto.quicksilver.managment.SceneManager.SceneType;
 
 public class LoadingScene extends BaseScene
 {

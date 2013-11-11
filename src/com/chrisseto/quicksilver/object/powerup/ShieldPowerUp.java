@@ -1,5 +1,5 @@
 
-package com.chrisseto.tilttolive.object.powerup;
+package com.chrisseto.quicksilver.object.powerup;
 
 import org.andengine.entity.IEntity;
 import org.andengine.entity.modifier.AlphaModifier;
@@ -7,10 +7,10 @@ import org.andengine.entity.modifier.IEntityModifier.IEntityModifierListener;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import org.andengine.util.modifier.IModifier;
 
-import com.chrisseto.tilttolive.base.PowerUpBase;
-import com.chrisseto.tilttolive.managment.ActiveManager;
-import com.chrisseto.tilttolive.object.EnemyBall;
-import com.chrisseto.tilttolive.util.Assets;
+import com.chrisseto.quicksilver.base.PowerUpBase;
+import com.chrisseto.quicksilver.managment.ActiveManager;
+import com.chrisseto.quicksilver.object.EnemyBall;
+import com.chrisseto.quicksilver.util.Assets;
 
 public class ShieldPowerUp extends PowerUpBase {
 

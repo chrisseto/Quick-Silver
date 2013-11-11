@@ -1,4 +1,4 @@
-package com.chrisseto.tilttolive;
+package com.chrisseto.quicksilver;
 
 import java.io.IOException;
 
@@ -15,9 +15,10 @@ import org.andengine.entity.scene.Scene;
 import org.andengine.ui.activity.BaseGameActivity;
 import org.andengine.util.debug.Debug;
 
-import com.chrisseto.tilttolive.managment.SceneManager;
-import com.chrisseto.tilttolive.util.Assets;
-import com.chrisseto.tilttolive.base.BaseScene;
+import com.chrisseto.quicksilver.base.BaseScene;
+import com.chrisseto.quicksilver.managment.SceneManager;
+import com.chrisseto.quicksilver.util.Assets;
+import com.chrisseto.tilttolive.R;
 
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;

@@ -1,4 +1,4 @@
-package com.chrisseto.tilttolive.util;
+package com.chrisseto.quicksilver.util;
 
 //import android.graphics.Bitmap;
 import java.util.Random;
@@ -23,7 +23,7 @@ import org.andengine.util.debug.Debug;
 import android.graphics.Color;
 import android.hardware.SensorManager;
 
-import com.chrisseto.tilttolive.MainGameActivity;
+import com.chrisseto.quicksilver.MainGameActivity;
 
 //This class is purely for resources and what not
 
@@ -63,7 +63,7 @@ public class Assets {
 	public ITiledTextureRegion buttons;
 	public ITextureRegion play_menu;
 	public ITextureRegion menu_select;
-	public ITextureRegion menu_overlay;
+	public ITextureRegion option_menu;
 	
 	// Game Texture
 	public BuildableBitmapTextureAtlas gameTextureAtlas;
@@ -105,12 +105,12 @@ public class Assets {
 	private void loadMenuGraphics()
 	{
 		BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/menu/");
-        menuTextureAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 1024, 1024, TextureOptions.BILINEAR);
+        menuTextureAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 1024, 2024, TextureOptions.BILINEAR);
         menu_background_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(menuTextureAtlas, activity, "background.png");
         buttons = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(menuTextureAtlas, activity, "buttons.png",1,3);
         play_menu = BitmapTextureAtlasTextureRegionFactory.createFromAsset(menuTextureAtlas, activity, "Play Menu.png");
         menu_select = BitmapTextureAtlasTextureRegionFactory.createFromAsset(menuTextureAtlas, activity, "menu_select.png");
-        //menu_overlay = BitmapTextureAtlasTextureRegionFactory.createFromAsset(menuTextureAtlas, activity, "Overlay.png");
+        option_menu = BitmapTextureAtlasTextureRegionFactory.createFromAsset(menuTextureAtlas, activity, "Option Menu.png");
     	try 
     	{
 			this.menuTextureAtlas.build(new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 0));

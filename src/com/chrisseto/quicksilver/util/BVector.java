@@ -1,4 +1,4 @@
-package com.chrisseto.tilttolive.util;
+package com.chrisseto.quicksilver.util;
 
 import java.text.DecimalFormat;
 

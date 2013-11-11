@@ -1,4 +1,4 @@
-package com.chrisseto.tilttolive.base;
+package com.chrisseto.quicksilver.base;
 
 import org.andengine.engine.handler.timer.ITimerCallback;
 import org.andengine.engine.handler.timer.TimerHandler;
@@ -6,9 +6,9 @@ import org.andengine.entity.sprite.Sprite;
 import org.andengine.opengl.texture.region.ITextureRegion;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
-import com.chrisseto.tilttolive.managment.ActiveManager;
-import com.chrisseto.tilttolive.object.EnemyBall;
-import com.chrisseto.tilttolive.util.Assets;
+import com.chrisseto.quicksilver.managment.ActiveManager;
+import com.chrisseto.quicksilver.object.EnemyBall;
+import com.chrisseto.quicksilver.util.Assets;
 
 //Notes
 //The beginFinish method should always call finish

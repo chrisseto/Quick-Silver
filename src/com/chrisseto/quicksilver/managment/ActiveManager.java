@@ -1,4 +1,4 @@
-package com.chrisseto.tilttolive.managment;
+package com.chrisseto.quicksilver.managment;
 
 import java.util.Iterator;
 
@@ -6,16 +6,16 @@ import org.andengine.engine.camera.Camera;
 import org.andengine.entity.scene.Scene;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
-import com.chrisseto.tilttolive.base.Manager;
-import com.chrisseto.tilttolive.base.PowerUpBase;
-import com.chrisseto.tilttolive.object.EnemyBall;
-import com.chrisseto.tilttolive.object.Player;
-import com.chrisseto.tilttolive.object.powerup.ExplosionPowerUp;
-import com.chrisseto.tilttolive.object.powerup.ShieldPowerUp;
-import com.chrisseto.tilttolive.object.powerup.DormantPowerUp.PowerUpType;
-import com.chrisseto.tilttolive.object.powerup.SpikePowerUp;
-import com.chrisseto.tilttolive.util.Assets;
-import com.chrisseto.tilttolive.scene.GameScene;
+import com.chrisseto.quicksilver.base.Manager;
+import com.chrisseto.quicksilver.base.PowerUpBase;
+import com.chrisseto.quicksilver.object.EnemyBall;
+import com.chrisseto.quicksilver.object.Player;
+import com.chrisseto.quicksilver.object.powerup.ExplosionPowerUp;
+import com.chrisseto.quicksilver.object.powerup.ShieldPowerUp;
+import com.chrisseto.quicksilver.object.powerup.SpikePowerUp;
+import com.chrisseto.quicksilver.object.powerup.DormantPowerUp.PowerUpType;
+import com.chrisseto.quicksilver.scene.GameScene;
+import com.chrisseto.quicksilver.util.Assets;
 
 public class ActiveManager extends Manager<PowerUpBase> {
 	

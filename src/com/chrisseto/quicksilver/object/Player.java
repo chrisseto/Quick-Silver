@@ -1,4 +1,4 @@
-package com.chrisseto.tilttolive.object;
+package com.chrisseto.quicksilver.object;
 
 import org.andengine.engine.camera.Camera;
 import org.andengine.engine.handler.IUpdateHandler;
@@ -12,9 +12,9 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 
-import com.chrisseto.tilttolive.base.Ball;
-import com.chrisseto.tilttolive.util.Assets;
-import com.chrisseto.tilttolive.util.BVector;
+import com.chrisseto.quicksilver.base.Ball;
+import com.chrisseto.quicksilver.util.Assets;
+import com.chrisseto.quicksilver.util.BVector;
 
 
 

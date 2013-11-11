@@ -1,16 +1,16 @@
-package com.chrisseto.tilttolive.managment;
+package com.chrisseto.quicksilver.managment;
 
 import org.andengine.engine.Engine;
 import org.andengine.engine.handler.timer.ITimerCallback;
 import org.andengine.engine.handler.timer.TimerHandler;
 import org.andengine.ui.IGameInterface.OnCreateSceneCallback;
 
-import com.chrisseto.tilttolive.base.BaseScene;
-import com.chrisseto.tilttolive.scene.GameScene;
-import com.chrisseto.tilttolive.scene.LoadingScene;
-import com.chrisseto.tilttolive.scene.MainMenuScene;
-import com.chrisseto.tilttolive.scene.SplashScene;
-import com.chrisseto.tilttolive.util.Assets;
+import com.chrisseto.quicksilver.base.BaseScene;
+import com.chrisseto.quicksilver.scene.GameScene;
+import com.chrisseto.quicksilver.scene.LoadingScene;
+import com.chrisseto.quicksilver.scene.MainMenuScene;
+import com.chrisseto.quicksilver.scene.SplashScene;
+import com.chrisseto.quicksilver.util.Assets;
 
 public class SceneManager
 {

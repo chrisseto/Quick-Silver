@@ -1,4 +1,4 @@
-package com.chrisseto.tilttolive.base;
+package com.chrisseto.quicksilver.base;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -12,8 +12,8 @@ import org.andengine.entity.sprite.Sprite;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import org.andengine.util.adt.pool.GenericPool;
 
-import com.chrisseto.tilttolive.object.powerup.DormantPowerUp.PowerUpType;
-import com.chrisseto.tilttolive.util.Assets;
+import com.chrisseto.quicksilver.object.powerup.DormantPowerUp.PowerUpType;
+import com.chrisseto.quicksilver.util.Assets;
 
 public abstract class Manager<T extends Sprite>  implements IUpdateHandler{
 	protected ArrayList<T> list;

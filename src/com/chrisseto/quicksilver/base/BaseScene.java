@@ -1,4 +1,4 @@
-package com.chrisseto.tilttolive.base;
+package com.chrisseto.quicksilver.base;
 
 import org.andengine.engine.Engine;
 import org.andengine.engine.camera.BoundCamera;
@@ -7,8 +7,8 @@ import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import android.app.Activity;
 
-import com.chrisseto.tilttolive.managment.SceneManager.SceneType;
-import com.chrisseto.tilttolive.util.Assets;
+import com.chrisseto.quicksilver.managment.SceneManager.SceneType;
+import com.chrisseto.quicksilver.util.Assets;
 
 public abstract class BaseScene extends Scene
 {

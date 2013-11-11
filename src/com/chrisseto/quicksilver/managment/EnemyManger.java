@@ -1,13 +1,13 @@
-package com.chrisseto.tilttolive.managment;
+package com.chrisseto.quicksilver.managment;
 
 import org.andengine.engine.camera.Camera;
 import org.andengine.entity.scene.Scene;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
-import com.chrisseto.tilttolive.base.Manager;
-import com.chrisseto.tilttolive.object.EnemyBall;
-import com.chrisseto.tilttolive.object.Player;
-import com.chrisseto.tilttolive.util.Assets;
+import com.chrisseto.quicksilver.base.Manager;
+import com.chrisseto.quicksilver.object.EnemyBall;
+import com.chrisseto.quicksilver.object.Player;
+import com.chrisseto.quicksilver.util.Assets;
 
 public class EnemyManger extends Manager<EnemyBall>{
 	final Player player;

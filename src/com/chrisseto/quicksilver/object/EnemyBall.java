@@ -1,4 +1,4 @@
-package com.chrisseto.tilttolive.object;
+package com.chrisseto.quicksilver.object;
 
 import java.util.ArrayList;
 
@@ -9,9 +9,9 @@ import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import org.andengine.util.modifier.IModifier;
 import org.andengine.entity.modifier.IEntityModifier.IEntityModifierListener;
 
-import com.chrisseto.tilttolive.base.Ball;
-import com.chrisseto.tilttolive.util.Assets;
-import com.chrisseto.tilttolive.util.BVector;
+import com.chrisseto.quicksilver.base.Ball;
+import com.chrisseto.quicksilver.util.Assets;
+import com.chrisseto.quicksilver.util.BVector;
 
 
 public class EnemyBall extends Ball

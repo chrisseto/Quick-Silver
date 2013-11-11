@@ -1,11 +1,11 @@
-package com.chrisseto.tilttolive.scene;
+package com.chrisseto.quicksilver.scene;
 
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 
-import com.chrisseto.tilttolive.base.BaseScene;
-import com.chrisseto.tilttolive.managment.SceneManager.SceneType;
+import com.chrisseto.quicksilver.base.BaseScene;
+import com.chrisseto.quicksilver.managment.SceneManager.SceneType;
 
 public class OptionsScene extends BaseScene implements SensorEventListener{
 

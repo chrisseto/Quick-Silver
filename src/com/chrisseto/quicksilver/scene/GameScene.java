@@ -1,4 +1,4 @@
-package com.chrisseto.tilttolive.scene;
+package com.chrisseto.quicksilver.scene;
 
 import java.text.DecimalFormat;
 
@@ -17,14 +17,14 @@ import org.andengine.util.adt.color.Color;
 
 import android.hardware.Sensor;
 
-import com.chrisseto.tilttolive.managment.EnemyManger;
-import com.chrisseto.tilttolive.managment.PowerUpManger;
-import com.chrisseto.tilttolive.managment.SceneManager;
-import com.chrisseto.tilttolive.managment.SceneManager.SceneType;
-import com.chrisseto.tilttolive.object.Player;
-import com.chrisseto.tilttolive.util.Assets;
+import com.chrisseto.quicksilver.managment.EnemyManger;
+import com.chrisseto.quicksilver.managment.PowerUpManger;
+import com.chrisseto.quicksilver.managment.SceneManager;
+import com.chrisseto.quicksilver.managment.SceneManager.SceneType;
+import com.chrisseto.quicksilver.object.Player;
+import com.chrisseto.quicksilver.util.Assets;
 
-public class GameScene extends com.chrisseto.tilttolive.base.BaseScene
+public class GameScene extends com.chrisseto.quicksilver.base.BaseScene
 		implements IOnSceneTouchListener {
 	private int score = 0;
 	private double mult = 1;

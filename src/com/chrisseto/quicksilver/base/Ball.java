@@ -1,11 +1,11 @@
-package com.chrisseto.tilttolive.base;
+package com.chrisseto.quicksilver.base;
 
 import org.andengine.engine.camera.Camera;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.opengl.texture.region.ITextureRegion;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
-import com.chrisseto.tilttolive.util.BVector;
+import com.chrisseto.quicksilver.util.BVector;
 
 public abstract class Ball extends Sprite {
 

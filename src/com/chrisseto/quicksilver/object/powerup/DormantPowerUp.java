@@ -1,4 +1,4 @@
-package com.chrisseto.tilttolive.object.powerup;
+package com.chrisseto.quicksilver.object.powerup;
 
 import java.util.Random;
 
@@ -6,9 +6,9 @@ import org.andengine.engine.camera.Camera;
 import org.andengine.opengl.texture.region.ITextureRegion;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
-import com.chrisseto.tilttolive.base.Ball;
-import com.chrisseto.tilttolive.managment.PowerUpManger;
-import com.chrisseto.tilttolive.util.Assets;
+import com.chrisseto.quicksilver.base.Ball;
+import com.chrisseto.quicksilver.managment.PowerUpManger;
+import com.chrisseto.quicksilver.util.Assets;
 
 public class DormantPowerUp extends Ball {
 

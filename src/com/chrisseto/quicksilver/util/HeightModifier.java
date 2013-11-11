@@ -1,4 +1,4 @@
-package com.chrisseto.tilttolive.util;
+package com.chrisseto.quicksilver.util;
 
 import org.andengine.entity.IEntity;
 import org.andengine.entity.modifier.SingleValueSpanEntityModifier;
