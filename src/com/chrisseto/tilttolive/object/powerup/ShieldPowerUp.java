@@ -17,7 +17,7 @@ public class ShieldPowerUp extends PowerUpBase {
 
 	public ShieldPowerUp(float pX, float pY, VertexBufferObjectManager vbom,
 			ActiveManager parent) {
-		super(parent.getPlayer().getX(), parent.getPlayer().getY(), 40, Assets.getInstance().explosion_pu, vbom, parent, 0);
+		super(parent.getPlayer().getX(), parent.getPlayer().getY(), 40, Assets.getInstance().shield, vbom, parent, 0);
 	}
 
 	@Override
@@ -28,13 +28,13 @@ public class ShieldPowerUp extends PowerUpBase {
 
 	@Override
 	protected void start() {
-		this.setAlpha(.5f);
+		//this.setAlpha(.5f);
 		
 	}
 
 	@Override
 	protected void beginFinish() {
-		this.registerEntityModifier(new AlphaModifier(.5f,.7f,0,new IEntityModifierListener() {
+		this.registerEntityModifier(new AlphaModifier(.25f,1,0,new IEntityModifierListener() {
 			
 			@Override
 			public void onModifierStarted(IModifier<IEntity> pModifier, IEntity pItem) {
