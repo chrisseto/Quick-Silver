@@ -22,6 +22,35 @@ public class MainMenuScene extends com.chrisseto.quicksilver.base.BaseScene {
 	private Sprite play_menu, menu_select, option_menu;
 	private boolean play, options, raised;
 
+	// ----------------------------------------------
+	// BUTTONS CLICKS
+	// ----------------------------------------------
+
+	private void normalMode() {
+		SceneManager.getInstance().loadGameScene(engine);
+	}
+
+	private void timeAttack() {
+
+	}
+
+	private void comingSoon() // Lol
+	{
+
+	}
+
+	private void calibrate() {
+
+	}
+
+	private void help() {
+
+	}
+
+	private void about() {
+
+	}
+
 	// ---------------------------------------------
 	// METHODS FROM SUPERCLASS
 	// ---------------------------------------------
@@ -44,31 +73,36 @@ public class MainMenuScene extends com.chrisseto.quicksilver.base.BaseScene {
 
 	@Override
 	public void disposeScene() {
-		// TODO Auto-generated method stub
+		// should Prolly be doing things here....
 	}
-
-	// ---------------------------------------------
-	// CLASS LOGIC
-	// ---------------------------------------------
 
 	private void createBackground() {
 		attachChild(new Sprite(400, 240, resourcesManager.menu_background_region, vbom) {
 			@Override
 			protected void preDraw(GLState pGLState, Camera pCamera) {
 				super.preDraw(pGLState, pCamera);
-				pGLState.enableDither();
+				pGLState.enableDither(); // Dithering. This is a good thing I am
+											// told
 			}
 		});
 	}
 
+	// HERE BE THE DRAGONS
+	// PROCEED WITH CAUTION
+	// THIS SHITS UGLY AS FUCK
 	private void createMenuChildScene() {
+		// Set all Vars
 		play = false;
 		options = false;
 		raised = false;
+		// ==========================DIVIDING SHIT LIKE I
+		// DO========================================
 
+		// I am an empty box, no one ever loved me
 		menu_select = new Sprite(400, 100, Assets.getInstance().menu_select, vbom);
 		menu_select.setVisible(false);
-		
+
+		// The God awful menu set up
 		option_menu = new Sprite(400, -139, Assets.getInstance().option_menu, vbom) {
 			@Override
 			public boolean onAreaTouched(final TouchEvent pAreaTouchEvent, final float pTouchAreaLocalX, final float pTouchAreaLocalY) {
@@ -83,12 +117,13 @@ public class MainMenuScene extends com.chrisseto.quicksilver.base.BaseScene {
 
 					menu_select.setVisible(true);
 				} else {
-					//if (pTouchAreaLocalY > 69 * 2) Calibrate here pop up a toast saying "calibrated"
-						
-					// else if(pTouchAreaLocalY > 69) Pop up of how to play
-					// menu_select.setY(115);
-					// else
-					// menu_select.setY(41); //About
+					if (pTouchAreaLocalY > 69 * 2) // Calibrate here pop up a
+													// toast saying "calibrated"
+						calibrate();
+					else if (pTouchAreaLocalY > 69)// Pop up of how to play
+						help();
+					else
+						about();
 					menu_select.setVisible(false);
 				}
 				return true;
@@ -110,18 +145,20 @@ public class MainMenuScene extends com.chrisseto.quicksilver.base.BaseScene {
 					menu_select.setVisible(true);
 				} else {
 					if (pTouchAreaLocalY > 69 * 2)
-						SceneManager.getInstance().loadGameScene(engine);
-					// else if(pTouchAreaLocalY > 69) Time attack mode?
-					// menu_select.setY(115);
-					// else
-					// menu_select.setY(41); //Some other future mode?
+						normalMode();
+					else if (pTouchAreaLocalY > 69)
+						timeAttack();
+					else
+						comingSoon();
 					menu_select.setVisible(false);
 				}
 				return true;
 			}
 		};
+		// End menu stuff
 
-
+		// The buttons and animation.... I hope I never have to change anything
+		// in here
 		buttons = new TiledSprite(400, 120, Assets.getInstance().buttons, vbom) {
 			@Override
 			public boolean onAreaTouched(final TouchEvent pAreaTouchEvent, final float pTouchAreaLocalX, final float pTouchAreaLocalY) {
@@ -238,18 +275,19 @@ public class MainMenuScene extends com.chrisseto.quicksilver.base.BaseScene {
 				return true;
 			}
 		};
+		// YO SHIT THE BUTTONS ARE LONG
 
-		
-		
-		this.registerTouchArea(buttons);
+		// Attach and register *in this order*
+		this.registerTouchArea(buttons); // wait... this doesnt make sense....
+											// but it works @.@
 		this.registerTouchArea(play_menu);
 		this.registerTouchArea(option_menu);
-		
+
 		this.attachChild(play_menu);
 		this.attachChild(option_menu);
 		attachChild(menu_select);
 		this.attachChild(buttons);
-		
+
 	}
 
 }
