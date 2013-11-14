@@ -51,12 +51,10 @@ public class ActiveManager extends Manager<PowerUpBase> {
 				{
 					hit = true;
 					e.die();
-					//enemy.remove(e);
 					((GameScene)parent).addToScore(hit);
 					eIt.remove();
 				}
 			}
-			//loop through enemies :[
 		}
 		//Collision and other such
 		

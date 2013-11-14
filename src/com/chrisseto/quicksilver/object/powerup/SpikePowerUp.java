@@ -18,7 +18,7 @@ public class SpikePowerUp extends PowerUpBase {
 		super(parent.getPlayer().getX(), parent.getPlayer().getY(), 45,
 				Assets.getInstance().explosion_pu, vbom, parent, 5);
 	}
-
+	//This should rotate with the player
 	@Override
 	protected void start() {
 		this.setScale(.1f);

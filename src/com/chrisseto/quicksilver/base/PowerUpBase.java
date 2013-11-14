@@ -15,14 +15,12 @@ import com.chrisseto.quicksilver.util.Assets;
 //A life of 0 will have no timer
 //and things about how to add new PU's in files
 
-
-public abstract class PowerUpBase extends Sprite {
+public abstract class PowerUpBase extends ShiftCenter {
 	protected boolean finished;
 	private float life;
 	protected final ActiveManager parent;
 
-	public PowerUpBase(float pX, float pY, float size,
-			ITextureRegion pTextureRegion, VertexBufferObjectManager vbom,
+	public PowerUpBase(float pX, float pY, float size, ITextureRegion pTextureRegion, VertexBufferObjectManager vbom,
 			ActiveManager parent, float life) {
 		super(pX, pY, size, size, pTextureRegion, vbom);
 		finished = false;
@@ -37,18 +35,15 @@ public abstract class PowerUpBase extends Sprite {
 	}
 
 	public boolean collidesWith(EnemyBall ball) {
-		
-		return (
-				((getX()-ball.getX()) * (getX()-ball.getX())) 
-				+ ((getY()-ball.getY())*(getY()-ball.getY())) 
-				<= ((getRadius() + ball.getRadius()) * (getRadius() + ball.getRadius())));
+
+		return (((getX() - ball.getX()) * (getX() - ball.getX())) + ((getY() - ball.getY()) * (getY() - ball.getY())) <= ((getRadius() + ball
+				.getRadius()) * (getRadius() + ball.getRadius())));
 	}
-	
-	public float getRadius()
-	{
-		return this.getScaleX()*this.getWidth()/2;
+
+	public float getRadius() {
+		return this.getScaleX() * this.getWidth() / 2;
 	}
-	
+
 	protected abstract void start();
 
 	protected abstract void beginFinish();
@@ -58,7 +53,7 @@ public abstract class PowerUpBase extends Sprite {
 	public void finish() {
 		finished = true;
 		Assets.getInstance().engine.runOnUpdateThread(new Runnable() {
-			
+
 			@Override
 			public void run() {
 				detachSelf();
@@ -70,14 +65,12 @@ public abstract class PowerUpBase extends Sprite {
 
 	private void startTimer() {
 		if (life > 0)
-			parent.parent.registerUpdateHandler(new TimerHandler(life,
-					new ITimerCallback() {
-						@Override
-						public void onTimePassed(
-								final TimerHandler pTimerHandler) {
-							beginFinish();
-						}
-					}));
+			parent.parent.registerUpdateHandler(new TimerHandler(life, new ITimerCallback() {
+				@Override
+				public void onTimePassed(final TimerHandler pTimerHandler) {
+					beginFinish();
+				}
+			}));
 	}
 
 }

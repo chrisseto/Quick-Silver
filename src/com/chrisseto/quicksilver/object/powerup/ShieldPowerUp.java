@@ -4,6 +4,8 @@ package com.chrisseto.quicksilver.object.powerup;
 import org.andengine.entity.IEntity;
 import org.andengine.entity.modifier.AlphaModifier;
 import org.andengine.entity.modifier.IEntityModifier.IEntityModifierListener;
+import org.andengine.entity.modifier.LoopEntityModifier;
+import org.andengine.entity.modifier.RotationModifier;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import org.andengine.util.modifier.IModifier;
 
@@ -29,7 +31,8 @@ public class ShieldPowerUp extends PowerUpBase {
 	@Override
 	protected void start() {
 		//this.setAlpha(.5f);
-		
+		registerEntityModifier(new LoopEntityModifier(new RotationModifier(5, 0, 350)));
+		//Add a rotation modifier
 	}
 
 	@Override

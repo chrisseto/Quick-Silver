@@ -35,8 +35,6 @@ public class DormantPowerUp extends Ball {
 
 			}
 		});
-		// this.parent.remove(this);
-		// Debug.d("Power Up Triggered");
 	}
 
 	// Static methods and Enum

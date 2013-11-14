@@ -18,15 +18,13 @@ public class EnemyManger extends Manager<EnemyBall>{
 		this.player = player;
 		this.spawnDelay = 4;
 		this.startSpawnTimer();
-		add(70,70);
-		add(20,20);
 	}
 	@Override
 	public void onUpdate(float pSecondsElapsed) {
 		for(EnemyBall b : list)
 		{
 			b.updateVelocity(list, player.getPosition());
-			if(b.collidesWith(player))
+			if(player.collidesWith(b))
 			{
 				//Game Over here
 			}

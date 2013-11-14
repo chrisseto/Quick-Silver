@@ -37,14 +37,8 @@ public class Assets {
 	{
 		return new Random().nextDouble() * upper + lower;
 	}
-	public enum Effect {
-		Kill, Freeze, Shock, Statis
-	}
-
-	public enum PowerUpType {
-		Blast, Spike, Shield;
-		public static final int length = 3;
-	}
+	
+	public float[] boundingBox;
 	
 	public Engine engine;
 	public MainGameActivity activity;
@@ -139,6 +133,8 @@ public class Assets {
 	private void loadGameGraphics()
 	
 	{
+		boundingBox = new float[] {6,10,camera.getWidth()-6,camera.getHeight()-30}; //This needs to be adjusted
+		
 		BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/game/");
         gameTextureAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 1024, 1024, TextureOptions.BILINEAR);
         

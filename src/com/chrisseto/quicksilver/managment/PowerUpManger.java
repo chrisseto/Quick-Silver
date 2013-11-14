@@ -12,7 +12,6 @@ import com.chrisseto.quicksilver.object.Player;
 import com.chrisseto.quicksilver.object.powerup.DormantPowerUp;
 import com.chrisseto.quicksilver.object.powerup.DormantPowerUp.PowerUpType;
 
-//and another manager for active powerups? :x
 public class PowerUpManger extends Manager<DormantPowerUp> {
 	final Player player;
 	public ActiveManager active;
@@ -26,9 +25,6 @@ public class PowerUpManger extends Manager<DormantPowerUp> {
 		tRadius = 15;
 		this.spawnDelay = 4;
 		this.startSpawnTimer();
-		add(70, 70);
-		add(20, 20);
-
 	}
 
 	@Override
@@ -38,11 +34,10 @@ public class PowerUpManger extends Manager<DormantPowerUp> {
 		while(i.hasNext())
 		{
 			p = i.next();
-			if(p.collidesWith(player))
+			if(player.collidesWith(p))
 			{
 				Debug.d("Power Up Triggered at " + p.getPosition().toString() + "by player at " + player.getPosition().toString());
 				p.trigger();
-				//p.detachChild(p);//This isn't properly removing powerups....
 				i.remove();
 			}
 		}

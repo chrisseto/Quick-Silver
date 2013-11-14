@@ -26,7 +26,7 @@ public class EnemyBall extends Ball
 	public void die()
 	{
 		unregisterUpdateHandler(getRootEntity());
-		this.registerEntityModifier(new AlphaModifier(.5f, 1, 0, new IEntityModifierListener() {
+		this.registerEntityModifier(new AlphaModifier(.25f, 1, 0, new IEntityModifierListener() {
 			
 			@Override
 			public void onModifierStarted(IModifier<IEntity> pModifier, IEntity pItem) {

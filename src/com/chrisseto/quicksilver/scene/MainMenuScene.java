@@ -10,9 +10,15 @@ import org.andengine.opengl.util.GLState;
 import org.andengine.util.modifier.IModifier;
 import org.andengine.entity.modifier.IEntityModifier.IEntityModifierListener;
 
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.widget.Toast;
+
 import com.chrisseto.quicksilver.managment.SceneManager;
 import com.chrisseto.quicksilver.managment.SceneManager.SceneType;
 import com.chrisseto.quicksilver.util.Assets;
+import com.chrisseto.quicksilver.util.Calibrate;
 
 public class MainMenuScene extends com.chrisseto.quicksilver.base.BaseScene {
 	// ---------------------------------------------
@@ -31,7 +37,13 @@ public class MainMenuScene extends com.chrisseto.quicksilver.base.BaseScene {
 	}
 
 	private void timeAttack() {
-
+		Assets.getInstance().activity.runOnUiThread(new Runnable() {
+			
+			@Override
+			public void run() {
+				Toast.makeText(activity, "Coming Soon!", Toast.LENGTH_SHORT).show();
+			}
+		});
 	}
 
 	private void comingSoon() // Lol
@@ -40,7 +52,14 @@ public class MainMenuScene extends com.chrisseto.quicksilver.base.BaseScene {
 	}
 
 	private void calibrate() {
-
+		Calibrate.calibrate();
+		Assets.getInstance().activity.runOnUiThread(new Runnable() {
+			
+			@Override
+			public void run() {
+				Toast.makeText(activity, "Accelerometer Calibrated", Toast.LENGTH_SHORT).show();
+			}
+		});
 	}
 
 	private void help() {
@@ -59,6 +78,7 @@ public class MainMenuScene extends com.chrisseto.quicksilver.base.BaseScene {
 	public void createScene() {
 		createBackground();
 		createMenuChildScene();
+		Calibrate.calibrate();
 	}
 
 	@Override

@@ -1,25 +1,22 @@
 package com.chrisseto.quicksilver.base;
 
 import org.andengine.engine.camera.Camera;
-import org.andengine.entity.sprite.Sprite;
 import org.andengine.opengl.texture.region.ITextureRegion;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
+import com.chrisseto.quicksilver.util.Assets;
 import com.chrisseto.quicksilver.util.BVector;
 
-public abstract class Ball extends Sprite {
+public abstract class Ball extends ShiftCenter {
 
 	private int size;
-	private BVector velocity, position;
-	private float WIDTH, HEIGHT;
+	private BVector velocity;
 
 	public Ball(float pX, float pY, int size, ITextureRegion pTextureRegion,
 			VertexBufferObjectManager pVertexBufferObjectManager, Camera camera) {
 		super(pX, pY, size, size, pTextureRegion, pVertexBufferObjectManager);
-		WIDTH = camera.getWidth();
-		HEIGHT = camera.getHeight();
+		
 		this.size = size;
-		this.position = new BVector(pX, pY);
 	}
 
 	public void setVelocity(BVector v) {
@@ -44,40 +41,18 @@ public abstract class Ball extends Sprite {
 	}
 
 	public void checkBounds() {
-		if (getX() > WIDTH - getRadius())
-			setX(WIDTH - getRadius());
-		if (getX() < getRadius())
-			setX(getRadius());
-		if (getY() > HEIGHT - getRadius())
-			setY(HEIGHT - getRadius());
-		if (getY() < getRadius())
-			setY(getRadius());
-	}
-
-	@Override
-	public void setX(float x) {
-		position.x = x;
-		super.setX(x);
-	}
-
-	@Override
-	public void setY(float y) {
-		position.y = y;
-		super.setY(y);
-	}
-
-	public BVector getPosition() {
-		return position;
+		setX(bound(getX(), Assets.getInstance().boundingBox[2]-getRadius(), Assets.getInstance().boundingBox[0]+getRadius()));
+		setY(bound(getY(), Assets.getInstance().boundingBox[3]-getRadius(), Assets.getInstance().boundingBox[1]+getRadius()));
 	}
 
 	public void updatePosition(BVector velocity) {
-		position.add(velocity);
-		super.setX(position.x);
-		super.setY(position.y);
+		super.getPosition().add(velocity);
+		super.setPosition(super.getPosition());
 	}
 
 	public boolean collidesWith(Ball other) {
 		return BVector.sub(this.getPosition(), other.getPosition()).magsq() <= (getRadius() + other.getRadius())
 				* (getRadius() + other.getRadius());
 	}
+	
 }

@@ -13,26 +13,17 @@ import org.andengine.engine.options.WakeLockOptions;
 import org.andengine.engine.options.resolutionpolicy.FillResolutionPolicy;
 import org.andengine.entity.scene.Scene;
 import org.andengine.ui.activity.BaseGameActivity;
-import org.andengine.util.debug.Debug;
 
-import com.chrisseto.quicksilver.base.BaseScene;
 import com.chrisseto.quicksilver.managment.SceneManager;
 import com.chrisseto.quicksilver.util.Assets;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.os.Bundle;
-import android.app.Activity;
 import android.view.KeyEvent;
 import android.view.Menu;
 
-public class MainGameActivity extends BaseGameActivity implements SensorEventListener{
+public class MainGameActivity extends BaseGameActivity{
 
 	
 	private BoundCamera camera;
-	
-	private SensorManager sensorManager;
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -44,7 +35,7 @@ public class MainGameActivity extends BaseGameActivity implements SensorEventLis
 	@Override
 	public EngineOptions onCreateEngineOptions() {
 		camera = new BoundCamera(0, 0, 800, 480);
-		EngineOptions engineOptions = new EngineOptions(true, ScreenOrientation.LANDSCAPE_FIXED, new FillResolutionPolicy(), this.camera);
+		EngineOptions engineOptions = new EngineOptions(true, ScreenOrientation.LANDSCAPE_SENSOR, new FillResolutionPolicy(), this.camera);
 		engineOptions.getAudioOptions().setNeedsMusic(true).setNeedsSound(true);
 		engineOptions.getRenderOptions().getConfigChooserOptions().setRequestedMultiSampling(true);
 		engineOptions.setWakeLockOptions(WakeLockOptions.SCREEN_ON);
@@ -67,6 +58,7 @@ public class MainGameActivity extends BaseGameActivity implements SensorEventLis
 	    return false; 
 	}
 	
+	@SuppressWarnings("static-access")
 	@Override
 	public void onCreateResources(
 			OnCreateResourcesCallback pOnCreateResourcesCallback)
@@ -108,25 +100,6 @@ public class MainGameActivity extends BaseGameActivity implements SensorEventLis
 		System.exit(0);	
 	}
 
-	@Override
-	public void onAccuracyChanged(Sensor arg0, int arg1) {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
-	public void onSensorChanged(SensorEvent e) {
-		synchronized(this)
-		{
-			switch(e.sensor.getType())
-			{
-			case Sensor.TYPE_ACCELEROMETER:
-				//x = e.value[0]
-				//y = e.value[1]
-				break;
-			}
-		}
-		// TODO Auto-generated method stub
-		
-	}
+	
 }

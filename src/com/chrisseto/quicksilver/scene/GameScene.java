@@ -1,23 +1,18 @@
 package com.chrisseto.quicksilver.scene;
 
-import java.text.DecimalFormat;
-
 import org.andengine.engine.camera.Camera;
 import org.andengine.engine.camera.hud.HUD;
 import org.andengine.entity.scene.IOnSceneTouchListener;
 import org.andengine.entity.scene.Scene;
-import org.andengine.entity.scene.background.Background;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.text.Text;
 import org.andengine.entity.text.TextOptions;
 import org.andengine.input.touch.TouchEvent;
 import org.andengine.opengl.util.GLState;
 import org.andengine.util.adt.align.HorizontalAlign;
-import org.andengine.util.adt.color.Color;
 
 import android.hardware.Sensor;
 
-import com.chrisseto.quicksilver.managment.EnemyManger;
 import com.chrisseto.quicksilver.managment.PowerUpManger;
 import com.chrisseto.quicksilver.managment.SceneManager;
 import com.chrisseto.quicksilver.managment.SceneManager.SceneType;
@@ -42,10 +37,8 @@ public class GameScene extends com.chrisseto.quicksilver.base.BaseScene
 	public void createScene() {
 		createBackground();
 		createHUD();
-		loadLevel(1);
 		createGameOverText();
 
-		// levelCompleteWindow = new LevelCompleteWindow(vbom);
 		player = new Player(vbom, camera);
 
 		Assets.getInstance().sensorManager.registerListener(player, Assets
@@ -53,7 +46,6 @@ public class GameScene extends com.chrisseto.quicksilver.base.BaseScene
 				.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), Assets
 				.getInstance().sensorManager.SENSOR_DELAY_GAME);
 		this.attachChild(player);
-		// enemyManger = new EnemyManger(this, vbom, camera, player);
 		powerUpManager = new PowerUpManger(this, vbom, camera, player);
 		setOnSceneTouchListener(this);
 	}
@@ -76,16 +68,6 @@ public class GameScene extends com.chrisseto.quicksilver.base.BaseScene
 
 		// TODO code responsible for disposing scene
 		// removing all game scene objects.
-	}
-
-	public boolean onSceneTouchEvent(Scene pScene, TouchEvent pSceneTouchEvent) {
-		// TODO Put somthing in here
-		return false;
-	}
-
-	private void loadLevel(int levelID) {
-		// Might need something here in the future
-		// Difficulty? eh
 	}
 
 	private void createGameOverText() {
@@ -132,6 +114,12 @@ public class GameScene extends com.chrisseto.quicksilver.base.BaseScene
 			mult = 1;
 		score += mult;
 		scoreText.setText("Score: " + score);
+	}
+
+	@Override
+	public boolean onSceneTouchEvent(Scene pScene, TouchEvent pSceneTouchEvent) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

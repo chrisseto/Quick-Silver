@@ -10,9 +10,7 @@ import org.andengine.engine.handler.timer.TimerHandler;
 import org.andengine.entity.scene.Scene;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
-import org.andengine.util.adt.pool.GenericPool;
 
-import com.chrisseto.quicksilver.object.powerup.DormantPowerUp.PowerUpType;
 import com.chrisseto.quicksilver.util.Assets;
 
 public abstract class Manager<T extends Sprite>  implements IUpdateHandler{
@@ -36,7 +34,8 @@ public abstract class Manager<T extends Sprite>  implements IUpdateHandler{
 	
 	public void add()
 	{
-			this.add((float)Assets.random(tRadius, camera.getWidth()),(float)Assets.random(tRadius, camera.getHeight()));
+			this.add((float)Assets.random(tRadius+Assets.getInstance().boundingBox[0], Assets.getInstance().boundingBox[2]-tRadius),
+					(float)Assets.random(tRadius+Assets.getInstance().boundingBox[1], Assets.getInstance().boundingBox[3]-tRadius));
 	}
 	
 	public T get(int index)
@@ -61,6 +60,7 @@ public abstract class Manager<T extends Sprite>  implements IUpdateHandler{
 	
 	public abstract float makeNewDelay();
 	
+	@SuppressWarnings("unused")
 	protected void startSpawnTimer()
 	{
 		TimerHandler spawnHandler;
