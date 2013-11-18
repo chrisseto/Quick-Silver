@@ -34,9 +34,30 @@ public class Point {
 		this.x = x;
 	}
 	
+	public void translate(float x, float y)
+	{
+		this.x+=x;
+		this.y+=y;
+	}
+	
+	public float distanceSq(Point other)
+	{
+		return distanceSq(this, other);
+	}
+	
+	public float distance(Point other)
+	{
+		return distance(this,other);
+	}
+	
 	public static float distanceSq(Point p1, Point p2)
 	{
 		return sq(p1.getX()-p2.getX()) + sq(p1.getY() - p2.getY());
+	}
+	
+	public static float distance(Point p1, Point p2)
+	{
+		return (float)Math.sqrt(distanceSq(p1, p2));
 	}
 	
 	private static float sq(float num)
