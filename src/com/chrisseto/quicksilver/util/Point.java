@@ -1,5 +1,7 @@
 package com.chrisseto.quicksilver.util;
 
+import java.text.DecimalFormat;
+
 public class Point {
 	private float x,y;
 	
@@ -50,6 +52,12 @@ public class Point {
 		return distance(this,other);
 	}
 	
+	public String toString() 
+	{
+			DecimalFormat f = new DecimalFormat();
+			return "(" + f.format(x) + ", " + f.format(y) +")";
+	}
+	
 	public static float distanceSq(Point p1, Point p2)
 	{
 		return sq(p1.getX()-p2.getX()) + sq(p1.getY() - p2.getY());
@@ -60,7 +68,7 @@ public class Point {
 		return (float)Math.sqrt(distanceSq(p1, p2));
 	}
 	
-	private static float sq(float num)
+	protected static float sq(float num)
 	{
 		return num*num;
 	}
