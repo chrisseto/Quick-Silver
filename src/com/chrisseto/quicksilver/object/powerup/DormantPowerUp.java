@@ -13,7 +13,7 @@ import com.chrisseto.quicksilver.util.Assets;
 public class DormantPowerUp extends Ball {
 
 	PowerUpType type;
-	final PowerUpManger parent;
+	final PowerUpManger parent; //this should be static
 
 	public DormantPowerUp(float x, float y, VertexBufferObjectManager vbom,
 			Camera camera, PowerUpType t, ITextureRegion tex,
@@ -26,7 +26,7 @@ public class DormantPowerUp extends Ball {
 
 	public void trigger() {
 		// Add effect
-		this.parent.active.add(this.getX(), this.getY(), type);
+		this.parent.active.add(getX(), getY(), type); 
 		Assets.getInstance().engine.runOnUpdateThread(new Runnable() {
 
 			@Override

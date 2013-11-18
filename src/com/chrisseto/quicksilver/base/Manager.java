@@ -18,7 +18,7 @@ public abstract class Manager<T extends Sprite>  implements IUpdateHandler{
 	protected final Scene parent;
 	protected final VertexBufferObjectManager vbom;
 	protected final Camera camera;
-	protected int tRadius,spawnDelay,count;
+	protected int tRadius,tDiameter,spawnDelay,count;
 	public Manager(Scene p, VertexBufferObjectManager vbom, Camera camera)
 	{
 		parent=p;
@@ -34,8 +34,8 @@ public abstract class Manager<T extends Sprite>  implements IUpdateHandler{
 	
 	public void add()
 	{
-			this.add((float)Assets.random(tRadius+Assets.getInstance().boundingBox[0], Assets.getInstance().boundingBox[2]-tRadius),
-					(float)Assets.random(tRadius+Assets.getInstance().boundingBox[1], Assets.getInstance().boundingBox[3]-tRadius));
+			this.add((float)Assets.random(tDiameter+Assets.getInstance().boundingBox[0], Assets.getInstance().boundingBox[2]-tDiameter),
+					(float)Assets.random(tDiameter+Assets.getInstance().boundingBox[1], Assets.getInstance().boundingBox[3]-tDiameter));
 	}
 	
 	public T get(int index)

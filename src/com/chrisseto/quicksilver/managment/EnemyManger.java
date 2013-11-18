@@ -15,6 +15,7 @@ public class EnemyManger extends Manager<EnemyBall>{
 	{
 		super(p, vbom, camera);
 		tRadius=6;
+		tDiameter = 12;
 		this.player = player;
 		this.spawnDelay = 4;
 		this.startSpawnTimer();

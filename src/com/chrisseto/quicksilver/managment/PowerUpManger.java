@@ -23,6 +23,7 @@ public class PowerUpManger extends Manager<DormantPowerUp> {
 		active = new ActiveManager(p, vbom, camera,player);
 		this.player = player;
 		tRadius = 15;
+		tDiameter = 30;
 		this.spawnDelay = 4;
 		this.startSpawnTimer();
 	}
