@@ -36,6 +36,12 @@ public class Point {
 		this.x = x;
 	}
 	
+	public void set(float x, float y)
+	{
+		setX(x);
+		setY(y);
+	}
+	
 	public void translate(float x, float y)
 	{
 		this.x+=x;
