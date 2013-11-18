@@ -15,7 +15,7 @@ public abstract class Ball extends ShiftCenter {
 	public Ball(float pX, float pY, int size, ITextureRegion pTextureRegion,
 			VertexBufferObjectManager pVertexBufferObjectManager, Camera camera) {
 		super(pX, pY, size, size, pTextureRegion, pVertexBufferObjectManager);
-		
+
 		this.size = size;
 	}
 
@@ -41,8 +41,10 @@ public abstract class Ball extends ShiftCenter {
 	}
 
 	public void checkBounds() {
-		setX(bound(getX(), Assets.getInstance().boundingBox[2]-getRadius(), Assets.getInstance().boundingBox[0]+getRadius()));
-		setY(bound(getY(), Assets.getInstance().boundingBox[3]-getRadius(), Assets.getInstance().boundingBox[1]+getRadius()));
+		setX(bound(getX(), Assets.getInstance().boundingBox[2] - getRadius(), Assets.getInstance().boundingBox[0]
+				+ getRadius()));
+		setY(bound(getY(), Assets.getInstance().boundingBox[3] - getRadius(), Assets.getInstance().boundingBox[1]
+				+ getRadius()));
 	}
 
 	public void updatePosition(BVector velocity) {
@@ -54,5 +56,5 @@ public abstract class Ball extends ShiftCenter {
 		return BVector.sub(this.getPosition(), other.getPosition()).magsq() <= (getRadius() + other.getRadius())
 				* (getRadius() + other.getRadius());
 	}
-	
+
 }

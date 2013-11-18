@@ -84,7 +84,7 @@ public class GameScene extends com.chrisseto.quicksilver.base.BaseScene
 	private void createHUD() {
 		gameHUD = new HUD();
 
-		scoreText = new Text(20, 420, resourcesManager.font,
+		scoreText = new Text(20, 435, resourcesManager.font,
 				"Score: 0123456789", new TextOptions(HorizontalAlign.LEFT),
 				vbom);
 		scoreText.setAnchorCenter(0, 0);

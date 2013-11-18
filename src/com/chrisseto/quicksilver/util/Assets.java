@@ -31,8 +31,6 @@ public class Assets {
 	
 	public static final Assets INSTANCE = new Assets();
 	
-	public static float[] ACCELEROMETERCALI;
-	
 	public static double random(double lower, double upper)
 	{
 		return new Random().nextDouble() * upper + lower;
@@ -43,7 +41,7 @@ public class Assets {
 	public Engine engine;
 	public MainGameActivity activity;
 	public BoundCamera camera;
-	public VertexBufferObjectManager vbom;
+	public VertexBufferObjectManager vbom; //Remove need of these in parameters
 	public SensorManager sensorManager;
 	
 	public Font font;
@@ -126,10 +124,10 @@ public class Assets {
 		FontFactory.setAssetBasePath("font/");
 		final ITexture mainFontTexture = new BitmapTextureAtlas(activity.getTextureManager(), 256, 256, TextureOptions.BILINEAR_PREMULTIPLYALPHA);
 
-		font = FontFactory.createStrokeFromAsset(activity.getFontManager(), mainFontTexture, activity.getAssets(), "font.ttf", 50, true, Color.WHITE, 2, Color.BLACK);
+		font = FontFactory.createStrokeFromAsset(activity.getFontManager(), mainFontTexture, activity.getAssets(), "hemi-head.ttf", 40, true, Color.WHITE, 2, Color.BLACK);
 		font.load();
+	
 	}
-
 	private void loadGameGraphics()
 	
 	{

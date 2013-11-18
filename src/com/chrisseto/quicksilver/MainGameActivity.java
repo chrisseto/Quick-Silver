@@ -58,13 +58,12 @@ public class MainGameActivity extends BaseGameActivity{
 	    return false; 
 	}
 	
-	@SuppressWarnings("static-access")
 	@Override
 	public void onCreateResources(
 			OnCreateResourcesCallback pOnCreateResourcesCallback)
 			throws IOException {
 		Assets.prepareManager(mEngine, this, camera, getVertexBufferObjectManager());
-		Assets.getInstance().sensorManager = (SensorManager) this.getSystemService(this.SENSOR_SERVICE);
+		Assets.getInstance().sensorManager = (SensorManager) this.getSystemService(SENSOR_SERVICE);
 		pOnCreateResourcesCallback.onCreateResourcesFinished();
 		// TODO Auto-generated method stub
 		
