@@ -5,10 +5,11 @@ import org.andengine.opengl.texture.region.ITextureRegion;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.chrisseto.quicksilver.util.BVector;
+import com.chrisseto.quicksilver.util.Point;
 
 public abstract class ShiftCenter extends Sprite{
 
-	private BVector position,offset;
+	private Point position,offset;
 	private float width,height;
 	
 	public ShiftCenter(float pX, float pY, float pWidth, float pHeight, ITextureRegion pTextureRegion,
@@ -17,37 +18,37 @@ public abstract class ShiftCenter extends Sprite{
 		
 		width = pWidth;
 		height = pHeight;
-		position = new BVector(pX, pY);
-		offset = new BVector(super.getWidth() - pWidth, pHeight - super.getHeight());
+		position = new Point(pX, pY);
+		offset = new Point(super.getWidth() - pWidth, pHeight - super.getHeight());
 		this.setRotationCenter(width/this.getWidth(), height/this.getHeight());
-		position.add(offset);
+		position.translate(offset.getX(),offset.getY());
 		setPosition(position);
 	}
 	
 	@Override
 	public void setX(float x)
 	{
-		position.x = x;
+		position.setX(x);
 		super.setX(x);
 	}
 
 	@Override
 	public void setY(float y)
 	{
-		position.y = y;
+		position.setY(y);
 		super.setY(y);
 	}
 	
 	@Override
 	public float getX()
 	{
-		return position.x;
+		return position.getX();
 	}
 	
 	@Override
 	public float getY()
 	{
-		return position.y;
+		return position.getY();
 	}
 	/*
 	@Override
@@ -62,14 +63,14 @@ public abstract class ShiftCenter extends Sprite{
 		return this.height;
 	}
 	*/
-	public void setPosition(BVector to)
+	public void setPosition(Point to)
 	{
-		position = to.get();
-		super.setX(position.x);
-		super.setY(position.y);
+		position = new Point(to.getX(),to.getY());
+		super.setX(position.getX());
+		super.setY(position.getY());
 	}
 	
-	public BVector getPosition() {
+	public Point getPosition() {
 		return position;
 	}
 	

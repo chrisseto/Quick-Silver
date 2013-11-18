@@ -11,6 +11,8 @@ import android.hardware.SensorEventListener;
 import com.chrisseto.quicksilver.base.Ball;
 import com.chrisseto.quicksilver.util.Assets;
 import com.chrisseto.quicksilver.util.BVector;
+import com.chrisseto.quicksilver.util.Collision;
+import com.chrisseto.quicksilver.util.Point;
 
 public class Player extends Sprite implements SensorEventListener {
 	private static float speed = 1.5f;
@@ -36,8 +38,8 @@ public class Player extends Sprite implements SensorEventListener {
 			
 			return false;// Add triangular collision here
 			*/
-			return BVector.sub(this.getPosition(), b.getPosition()).magsq() <= (getRadius() + b.getRadius())
-					* (getRadius() + b.getRadius());
+			return Collision.collides(b, getX(), getY(), getRadius());
+			
 			//return true;
 		}
 		else
@@ -55,8 +57,8 @@ public class Player extends Sprite implements SensorEventListener {
 		return getWidth() / 2;
 	}
 
-	public BVector getPosition() {
-		return new BVector(this.getX(), this.getY());
+	public Point getPosition() {
+		return new Point(this.getX(), this.getY());
 	}
 
 	private void rotate(float x, float y) {
@@ -86,6 +88,8 @@ public class Player extends Sprite implements SensorEventListener {
 				// while
 				// standing
 				// still/flat
+				
+				//Also fix orientation
 				checkBounds();
 				break;
 			}

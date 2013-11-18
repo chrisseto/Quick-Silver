@@ -8,6 +8,7 @@ import com.chrisseto.quicksilver.base.Manager;
 import com.chrisseto.quicksilver.object.EnemyBall;
 import com.chrisseto.quicksilver.object.Player;
 import com.chrisseto.quicksilver.util.Assets;
+import com.chrisseto.quicksilver.util.Vector;
 
 public class EnemyManger extends Manager<EnemyBall>{
 	final Player player;
@@ -24,7 +25,7 @@ public class EnemyManger extends Manager<EnemyBall>{
 	public void onUpdate(float pSecondsElapsed) {
 		for(EnemyBall b : list)
 		{
-			b.updateVelocity(list, player.getPosition());
+			b.updateVelocity(list, (Vector)player.getPosition());
 			if(player.collidesWith(b))
 			{
 				//Game Over here

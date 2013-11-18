@@ -6,11 +6,13 @@ import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.chrisseto.quicksilver.util.Assets;
 import com.chrisseto.quicksilver.util.BVector;
+import com.chrisseto.quicksilver.util.Collision;
+import com.chrisseto.quicksilver.util.Vector;
 
 public abstract class Ball extends ShiftCenter {
 
 	private int size;
-	private BVector velocity;
+	private Vector velocity;
 
 	public Ball(float pX, float pY, int size, ITextureRegion pTextureRegion,
 			VertexBufferObjectManager pVertexBufferObjectManager, Camera camera) {
@@ -19,17 +21,17 @@ public abstract class Ball extends ShiftCenter {
 		this.size = size;
 	}
 
-	public void setVelocity(BVector v) {
-		this.velocity = v;
+	public void setVelocity(Vector v) {
+		this.velocity = new Vector(v.getX(),v.getY());
 	}
 
-	public BVector getVelocity() {
+	public Vector getVelocity() {
 		return velocity;
 	}
 
 	public void update() {
-		setX(velocity.x + getX());
-		setY(velocity.y + getY());
+		setX(velocity.getX() + getX());
+		setY(velocity.getY() + getY());
 	}
 
 	public int getSize() {
@@ -47,14 +49,13 @@ public abstract class Ball extends ShiftCenter {
 				+ getRadius()));
 	}
 
-	public void updatePosition(BVector velocity) {
-		super.getPosition().add(velocity);
+	public void updatePosition(Vector velocity) {
+		super.getPosition().translate(velocity.getX(),velocity.getY());
 		super.setPosition(super.getPosition());
 	}
 
 	public boolean collidesWith(Ball other) {
-		return BVector.sub(this.getPosition(), other.getPosition()).magsq() <= (getRadius() + other.getRadius())
-				* (getRadius() + other.getRadius());
+		return Collision.collides(this, other);
 	}
 
 }

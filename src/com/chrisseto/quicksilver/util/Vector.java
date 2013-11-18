@@ -12,6 +12,11 @@ public class Vector extends Point{
 		super((float)Math.cos(angle),(float)Math.sin(angle));	
 	}
 	
+	public Vector(Point p1, Point p2)
+	{
+		super(p2.getX() - p1.getX(),p2.getY() - p1.getY());
+	}
+	
 	public Vector(float x, float y)
 	{
 		super(x,y);
@@ -76,6 +81,11 @@ public class Vector extends Point{
 	{
 		float mag = magnitude();
 		return new Vector(getX()/mag,getY()/mag);
+	}
+	
+	public float project(Vector other)
+	{
+		return dot(other.normalize());
 	}
 	
 	//public Vector project(Vector Other)
