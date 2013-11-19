@@ -1,24 +1,25 @@
 package com.chrisseto.quicksilver.base;
 
 import org.andengine.engine.camera.Camera;
+import org.andengine.entity.sprite.Sprite;
 import org.andengine.opengl.texture.region.ITextureRegion;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.chrisseto.quicksilver.util.Assets;
-import com.chrisseto.quicksilver.util.BVector;
 import com.chrisseto.quicksilver.util.Collision;
+import com.chrisseto.quicksilver.util.Point;
 import com.chrisseto.quicksilver.util.Vector;
 
-public abstract class Ball extends ShiftCenter {
+public abstract class Ball extends Sprite {
 
-	private int size;
+	private int diameter;
 	private Vector velocity;
 
 	public Ball(float pX, float pY, int size, ITextureRegion pTextureRegion,
 			VertexBufferObjectManager pVertexBufferObjectManager, Camera camera) {
 		super(pX, pY, size, size, pTextureRegion, pVertexBufferObjectManager);
 
-		this.size = size;
+		this.diameter = size;
 	}
 
 	public void setVelocity(Vector v) {
@@ -34,12 +35,12 @@ public abstract class Ball extends ShiftCenter {
 		setY(velocity.getY() + getY());
 	}
 
-	public int getSize() {
-		return size;
+	public int getDiameter() {
+		return diameter;
 	}
 
 	public int getRadius() {
-		return size / 2;
+		return diameter / 2;
 	}
 
 	public void checkBounds() {
@@ -48,14 +49,34 @@ public abstract class Ball extends ShiftCenter {
 		setY(bound(getY(), Assets.getInstance().boundingBox[3] - getRadius(), Assets.getInstance().boundingBox[1]
 				+ getRadius()));
 	}
-
+	
+	public Point getPosition()
+	{
+		return new Point(getX(),getY());
+	}
+	
+	public void setPosition(Point p)
+	{
+		this.setX(p.getX());
+		this.setY(p.getY());
+	}
+	
 	public void updatePosition(Vector velocity) {
-		super.getPosition().translate(velocity.getX(),velocity.getY());
-		super.setPosition(super.getPosition());
+		this.setX(getX() + velocity.getX());
+		this.setY(getY() + velocity.getY());
 	}
 
 	public boolean collidesWith(Ball other) {
 		return Collision.collides(this, other);
 	}
 
+	public static float bound(float toBound, float high, float low)
+	{
+		if(toBound>high)
+			return high;
+		else if (toBound < low)
+			return low;
+		else 
+			return toBound;
+	}
 }

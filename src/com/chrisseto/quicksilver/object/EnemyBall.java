@@ -73,12 +73,12 @@ public class EnemyBall extends Ball
 	      if (dist <= 0)
 	      {
 	        temp.divide(.00001f);   
-	        temp.multiply(ATTRACTION*getSize()/(.000001f*.000001f));
+	        temp.multiply(ATTRACTION*getDiameter()/(.000001f*.000001f));
 	      }
 	      else
 	      {
 	        temp.divide(dist);   
-	        temp.multiply(ATTRACTION*getSize()/(dist*dist));
+	        temp.multiply(ATTRACTION*getDiameter()/(dist*dist));
 	      }
 	      vel.add(temp);
 		}
