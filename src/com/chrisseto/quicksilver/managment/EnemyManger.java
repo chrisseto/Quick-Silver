@@ -35,7 +35,7 @@ public class EnemyManger extends Manager<EnemyBall>{
 	}
 	@Override
 	public void add(float x, float y) { //Random location needs to be improved, not spawning on or too close to player. could check here?
-		list.add(new EnemyBall(x, y, vbom, camera));
+		list.add(new EnemyBall(x, y));
 		this.parent.attachChild(list.get(list.size()-1));
 		count++;
 		org.andengine.util.debug.Debug.d("New enemy at (" + x + ", "+ y + ")" );

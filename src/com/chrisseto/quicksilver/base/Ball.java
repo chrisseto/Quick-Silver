@@ -1,9 +1,7 @@
 package com.chrisseto.quicksilver.base;
 
-import org.andengine.engine.camera.Camera;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.opengl.texture.region.ITextureRegion;
-import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.chrisseto.quicksilver.util.Assets;
 import com.chrisseto.quicksilver.util.Collision;
@@ -12,12 +10,11 @@ import com.chrisseto.quicksilver.util.Vector;
 
 public abstract class Ball extends Sprite {
 
-	private int diameter;
+	private float diameter;
 	private Vector velocity;
 
-	public Ball(float pX, float pY, int size, ITextureRegion pTextureRegion,
-			VertexBufferObjectManager pVertexBufferObjectManager, Camera camera) {
-		super(pX, pY, size, size, pTextureRegion, pVertexBufferObjectManager);
+	public Ball(float pX, float pY, float size, ITextureRegion pTextureRegion) {
+		super(pX, pY, size, size, pTextureRegion, Assets.getInstance().vbom);
 
 		this.diameter = size;
 	}
@@ -35,11 +32,11 @@ public abstract class Ball extends Sprite {
 		setY(velocity.getY() + getY());
 	}
 
-	public int getDiameter() {
+	public float getDiameter() {
 		return diameter;
 	}
 
-	public int getRadius() {
+	public float getRadius() {
 		return diameter / 2;
 	}
 

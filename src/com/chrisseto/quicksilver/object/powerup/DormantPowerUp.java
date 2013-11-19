@@ -19,7 +19,7 @@ public class DormantPowerUp extends Ball {
 			Camera camera, PowerUpType t, ITextureRegion tex,
 			PowerUpManger parent) {
 
-		super(x, y, 30, tex, vbom, camera);
+		super(x, y, 30, tex);
 		this.type = t;
 		this.parent = parent;
 	}

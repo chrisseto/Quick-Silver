@@ -14,14 +14,14 @@ import com.chrisseto.quicksilver.util.Assets;
 //A life of 0 will have no timer
 //and things about how to add new PU's in files
 
-public abstract class PowerUpBase extends ShiftCenter {
+public abstract class PowerUpBase extends Ball {
 	protected boolean finished;
 	private float life,size;
 	protected final ActiveManager parent; //To be made static
 
 	public PowerUpBase(float pX, float pY, float size, ITextureRegion pTextureRegion, VertexBufferObjectManager vbom,
 			ActiveManager parent, float life) {
-		super(pX, pY, size, size, pTextureRegion, vbom);
+		super(pX, pY, size, pTextureRegion);
 		finished = false;
 		this.life = life;
 		this.parent = parent;

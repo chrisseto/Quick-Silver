@@ -10,7 +10,6 @@ import android.hardware.SensorEventListener;
 
 import com.chrisseto.quicksilver.base.Ball;
 import com.chrisseto.quicksilver.util.Assets;
-import com.chrisseto.quicksilver.util.BVector;
 import com.chrisseto.quicksilver.util.Collision;
 import com.chrisseto.quicksilver.util.Point;
 
