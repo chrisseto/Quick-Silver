@@ -19,6 +19,7 @@ public class EnemyBall extends Ball
 	Vector velocity;
 	private static float ATTRACTION = 4;
 	private static float SPEED = 1.5f;
+	
 	public EnemyBall(float x, float y)
 	{
 		super(x,y,20,Assets.getInstance().enemy_region);
