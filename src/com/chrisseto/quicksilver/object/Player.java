@@ -7,6 +7,9 @@ import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.Surface;
 
 import com.chrisseto.quicksilver.base.Ball;
 import com.chrisseto.quicksilver.util.Assets;
@@ -22,26 +25,20 @@ public class Player extends Sprite implements SensorEventListener {
 	}
 
 	public boolean collidesWith(Ball b) {
-		if (super.collidesWith(b))
-		{
-		/*	float sq = b.getRadius()*b.getRadius();
-			float dx,dy;
-			for(int i = 0; i < 3; i++)
-			{
-				dx = getVertexX(i+1) - b.getX();
-				dy = getVertexY(i+1) - b.getY();
-				if(sq <= (dx*dx) + (dy*dy))
-					return true;
-			}
-			
-			
-			return false;// Add triangular collision here
-			*/
+		if (super.collidesWith(b)) {
+			/*
+			 * float sq = b.getRadius()*b.getRadius(); float dx,dy; for(int i =
+			 * 0; i < 3; i++) { dx = getVertexX(i+1) - b.getX(); dy =
+			 * getVertexY(i+1) - b.getY(); if(sq <= (dx*dx) + (dy*dy)) return
+			 * true; }
+			 * 
+			 * 
+			 * return false;// Add triangular collision here
+			 */
 			return Collision.collides(b, getX(), getY(), getRadius());
-			
-			//return true;
-		}
-		else
+
+			// return true;
+		} else
 			return false;
 	}
 
@@ -53,7 +50,7 @@ public class Player extends Sprite implements SensorEventListener {
 	}
 
 	public float getRadius() {
-		return getWidth() / 2;
+		return 35 / 2; // This might need to be changed
 	}
 
 	public Point getPosition() {
@@ -61,12 +58,11 @@ public class Player extends Sprite implements SensorEventListener {
 	}
 
 	private void rotate(float x, float y) {
-
-		if (Math.abs(x) > .05 && Math.abs(y) > .05) {
+		if (Math.abs(x) > .1 && Math.abs(y) > .1) {
 			float turn = -(float) Math.toDegrees(Math.atan2(x, y)) - 180;
-			//if (turn <)
-				setRotation(turn);
+			setRotation(turn);
 		}
+
 	}
 
 	@Override
@@ -74,9 +70,16 @@ public class Player extends Sprite implements SensorEventListener {
 		synchronized (this) {
 			switch (e.sensor.getType()) {
 			case Sensor.TYPE_ACCELEROMETER:
-				setX(getX() + ((e.values[1] - accelCal[1]) * speed));
-				setY(getY() + ((-e.values[0] + accelCal[0]) * speed));
-				rotate(e.values[1] - accelCal[1], e.values[0] - accelCal[0]);
+
+				if (Assets.getInstance().activity.getWindowManager().getDefaultDisplay().getRotation() == Surface.ROTATION_90) {
+					setX(getX() + ((e.values[1] - accelCal[1]) * speed));
+					setY(getY() + (-(e.values[0] - accelCal[0]) * speed));
+					rotate(e.values[1] - accelCal[1], e.values[0] - accelCal[0]);
+				} else {
+					setX(getX() + (-(e.values[1] - accelCal[1]) * speed));
+					setY(getY() + ((e.values[0] - accelCal[0]) * speed));
+					rotate(-(e.values[1] - accelCal[1]), -(e.values[0] - accelCal[0]));
+				}
 				// rotate(-(float) Math.toDegrees(Math.atan2(e.values[1] -
 				// accelCal[1], e.values[0] - accelCal[0])) - 180);// need
 				// a
@@ -87,8 +90,6 @@ public class Player extends Sprite implements SensorEventListener {
 				// while
 				// standing
 				// still/flat
-				
-				//Also fix orientation
 				checkBounds();
 				break;
 			}
@@ -109,31 +110,27 @@ public class Player extends Sprite implements SensorEventListener {
 		else
 			return toBound;
 	}
-	
-	private float getVertexY(int num)
-	{
-		switch(num)
-		{
+
+	private float getVertexY(int num) {
+		switch (num) {
 		case 1:
-			return (float) (this.getY()+(Math.sin(Math.toRadians(getRotation())*(this.getHeight()/2))));
+			return (float) (this.getY() + (Math.sin(Math.toRadians(getRotation()) * (this.getHeight() / 2))));
 		case 2:
-			return (float) (this.getY()+(Math.sin(Math.toRadians(getRotation()-60)*(this.getHeight()/2))));
+			return (float) (this.getY() + (Math.sin(Math.toRadians(getRotation() - 60) * (this.getHeight() / 2))));
 		case 3:
-			return (float) (this.getY()+(Math.sin(Math.toRadians(getRotation()+60)*(this.getHeight()/2))));
+			return (float) (this.getY() + (Math.sin(Math.toRadians(getRotation() + 60) * (this.getHeight() / 2))));
 		}
 		return 0;
 	}
-	
-	private float getVertexX(int num)
-	{
-		switch(num)
-		{
+
+	private float getVertexX(int num) {
+		switch (num) {
 		case 1:
 			return this.getX();
 		case 2:
-			return this.getX()-(this.getWidth()/2);
+			return this.getX() - (this.getWidth() / 2);
 		case 3:
-			return this.getX()+(this.getWidth()/2);
+			return this.getX() + (this.getWidth() / 2);
 		}
 		return 0;
 	}

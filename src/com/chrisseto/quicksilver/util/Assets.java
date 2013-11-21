@@ -67,6 +67,7 @@ public class Assets {
 	public ITextureRegion spike_pu;
 	public ITextureRegion shield_pu;
 	public ITextureRegion shield;
+	public ITextureRegion spikes;
 	public ITextureRegion game_background;
 	
 	private BitmapTextureAtlas splashTextureAtlas;
@@ -142,7 +143,8 @@ public class Assets {
         explosion_pu = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "Explosion Orb.png");
         spike_pu = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "Spike Orb.png");
         shield_pu = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "Shield Orb.png");
-        shield = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "shield.png");
+        shield = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "Shield.png");
+        spikes = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "Spike.png");
         
        // complete_window_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "levelCompleteWindow.png");
 

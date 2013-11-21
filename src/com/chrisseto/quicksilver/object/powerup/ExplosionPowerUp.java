@@ -16,7 +16,7 @@ public class ExplosionPowerUp extends PowerUpBase {
 	public ExplosionPowerUp(float pX, float pY,
 			VertexBufferObjectManager pVertexBufferObjectManager,
 			ActiveManager parent) {
-		super(pX, pY, 20, Assets.getInstance().explosion_pu,
+		super(pX, pY, 35, Assets.getInstance().explosion_pu,
 				pVertexBufferObjectManager, parent, 4);
 		// Fade out
 		// Update radius with scaling :s

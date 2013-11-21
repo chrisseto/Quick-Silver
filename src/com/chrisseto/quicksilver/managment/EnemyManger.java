@@ -25,7 +25,7 @@ public class EnemyManger extends Manager<EnemyBall>{
 	public void onUpdate(float pSecondsElapsed) {
 		for(EnemyBall b : list)
 		{
-			b.updateVelocity(list, (Vector)player.getPosition());
+			b.updateVelocity(list, player.getPosition());
 			if(player.collidesWith(b))
 			{
 				//Game Over here

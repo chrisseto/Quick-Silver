@@ -6,16 +6,14 @@ Tilt to live for android
 
 TODO
 ====
-* Menu(s)
-* Name
 * Unlock System
 * Score Keeping
 * Optimize
-* Sprites
-* Background
 * Enemy Shapes
 * Enemy algorithm
 * Powerup alogrithm
+* Shield should be smaller than spikes
+* location generator
 
 
 Algorithms

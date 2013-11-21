@@ -8,6 +8,7 @@ import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import com.chrisseto.quicksilver.managment.ActiveManager;
 import com.chrisseto.quicksilver.object.EnemyBall;
 import com.chrisseto.quicksilver.util.Assets;
+import com.chrisseto.quicksilver.util.Collision;
 
 //Notes
 //The beginFinish method should always call finish
@@ -16,8 +17,8 @@ import com.chrisseto.quicksilver.util.Assets;
 
 public abstract class PowerUpBase extends Ball {
 	protected boolean finished;
-	private float life,size;
-	protected final ActiveManager parent; //To be made static
+	private float life, size;
+	protected final ActiveManager parent; // To be made static
 
 	public PowerUpBase(float pX, float pY, float size, ITextureRegion pTextureRegion, VertexBufferObjectManager vbom,
 			ActiveManager parent, float life) {
@@ -34,11 +35,6 @@ public abstract class PowerUpBase extends Ball {
 		return finished;
 	}
 
-	public boolean collidesWith(EnemyBall ball) {
-
-		return (((getX() - ball.getX()) * (getX() - ball.getX())) + ((getY() - ball.getY()) * (getY() - ball.getY())) <= ((getRadius() + ball
-				.getRadius()) * (getRadius() + ball.getRadius())));
-	}
 
 	public float getRadius() {
 		return this.getScaleX() * size / 2;

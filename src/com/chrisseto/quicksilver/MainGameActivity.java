@@ -12,6 +12,8 @@ import org.andengine.engine.options.ScreenOrientation;
 import org.andengine.engine.options.WakeLockOptions;
 import org.andengine.engine.options.resolutionpolicy.FillResolutionPolicy;
 import org.andengine.entity.scene.Scene;
+import org.andengine.input.sensor.orientation.IOrientationListener;
+import org.andengine.input.sensor.orientation.OrientationData;
 import org.andengine.ui.activity.BaseGameActivity;
 
 import com.chrisseto.quicksilver.managment.SceneManager;

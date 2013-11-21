@@ -14,7 +14,7 @@ public abstract class Ball extends Sprite {
 	private Vector velocity;
 
 	public Ball(float pX, float pY, float size, ITextureRegion pTextureRegion) {
-		super(pX, pY, size, size, pTextureRegion, Assets.getInstance().vbom);
+		super(pX, pY, pTextureRegion, Assets.getInstance().vbom);
 
 		this.diameter = size;
 	}

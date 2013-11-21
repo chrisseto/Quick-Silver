@@ -11,6 +11,7 @@ import org.andengine.entity.modifier.IEntityModifier.IEntityModifierListener;
 
 import com.chrisseto.quicksilver.base.Ball;
 import com.chrisseto.quicksilver.util.Assets;
+import com.chrisseto.quicksilver.util.Point;
 import com.chrisseto.quicksilver.util.Vector;
 
 
@@ -53,11 +54,11 @@ public class EnemyBall extends Ball
 		this.setX(x+getX());
 		this.setY(y+getY());
 	}
-	public void updateVelocity(ArrayList<EnemyBall> list, Vector player)
+	public void updateVelocity(ArrayList<EnemyBall> list, Point point)
 	{
-		velocity = new Vector();
-		velocity.add(moveToPlayer(player));
-		velocity.add(getRepulse(list));
+		velocity = moveToPlayer(point);//new Vector();
+		//velocity.add();
+		velocity = velocity.add(getRepulse(list));
 		updatePosition(velocity);
 		
 	}
@@ -69,24 +70,24 @@ public class EnemyBall extends Ball
 		float dist;
 		for(EnemyBall b : list)
 		{
-		 temp = ((Vector)getPosition()).substract((Vector)b.getPosition());
+		 temp = new Vector(getX() - b.getX(),getY() - b.getY());
 		 dist = (float)getPosition().distance(b.getPosition());
 	      if (dist <= 0)
 	      {
-	        temp.divide(.00001f);   
-	        temp.multiply(ATTRACTION*getDiameter()/(.000001f*.000001f));
+	    	  temp = temp.divide(.00001f);   
+	       temp = temp.multiply(ATTRACTION*getDiameter()/(.000001f*.000001f));
 	      }
 	      else
 	      {
-	        temp.divide(dist);   
-	        temp.multiply(ATTRACTION*getDiameter()/(dist*dist));
+	    	  temp = temp.divide(dist);   
+	    	  temp =temp.multiply(ATTRACTION*getDiameter()/(dist*dist));
 	      }
-	      vel.add(temp);
+	     vel = vel.add(temp);
 		}
 		return vel;
 	}
-	private Vector moveToPlayer(Vector player)
+	private Vector moveToPlayer(Point player)
 	{
-		   return player.substract((Vector) getPosition()).normalize().multiply(SPEED);
+		   return new Vector(player.getX()-getX(),player.getY()-getY()).normalize().multiply(SPEED);
 	}
 }

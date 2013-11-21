@@ -9,9 +9,9 @@ import org.andengine.entity.modifier.RotationModifier;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import org.andengine.util.modifier.IModifier;
 
+import com.chrisseto.quicksilver.base.Ball;
 import com.chrisseto.quicksilver.base.PowerUpBase;
 import com.chrisseto.quicksilver.managment.ActiveManager;
-import com.chrisseto.quicksilver.object.EnemyBall;
 import com.chrisseto.quicksilver.util.Assets;
 
 public class ShieldPowerUp extends PowerUpBase {
@@ -19,7 +19,7 @@ public class ShieldPowerUp extends PowerUpBase {
 
 	public ShieldPowerUp(float pX, float pY, VertexBufferObjectManager vbom,
 			ActiveManager parent) {
-		super(parent.getPlayer().getX(), parent.getPlayer().getY(), 40, Assets.getInstance().shield, vbom, parent, 0);
+		super(parent.getPlayer().getX(), parent.getPlayer().getY(), 70, Assets.getInstance().shield, vbom, parent, 0);
 	}
 
 	@Override
@@ -30,7 +30,6 @@ public class ShieldPowerUp extends PowerUpBase {
 
 	@Override
 	protected void start() {
-		//this.setAlpha(.5f);
 		registerEntityModifier(new LoopEntityModifier(new RotationModifier(5, 0, 350)));
 		//Add a rotation modifier
 	}
@@ -53,10 +52,8 @@ public class ShieldPowerUp extends PowerUpBase {
 		}));
 		
 	}
-	
-	
 	@Override
-	public boolean collidesWith(EnemyBall ball) {
+	public boolean collidesWith(Ball ball) {
 		if(super.collidesWith(ball))
 		{
 			beginFinish();
