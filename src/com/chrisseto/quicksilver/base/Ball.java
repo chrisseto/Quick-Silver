@@ -67,6 +67,7 @@ public abstract class Ball extends Sprite {
 		return Collision.collides(this, other);
 	}
 
+	//TODO
 	public static float bound(float toBound, float high, float low)
 	{
 		if(toBound>high)
