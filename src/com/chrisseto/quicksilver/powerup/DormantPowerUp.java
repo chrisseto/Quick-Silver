@@ -1,4 +1,4 @@
-package com.chrisseto.quicksilver.object.powerup;
+package com.chrisseto.quicksilver.powerup;
 
 import java.util.Random;
 

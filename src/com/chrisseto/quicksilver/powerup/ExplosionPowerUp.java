@@ -1,8 +1,9 @@
-package com.chrisseto.quicksilver.object.powerup;
+package com.chrisseto.quicksilver.powerup;
 
 import org.andengine.entity.IEntity;
-import org.andengine.entity.modifier.ScaleModifier;
+import org.andengine.entity.modifier.AlphaModifier;
 import org.andengine.entity.modifier.IEntityModifier.IEntityModifierListener;
+import org.andengine.entity.modifier.ScaleModifier;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import org.andengine.util.modifier.IModifier;
 
@@ -10,24 +11,26 @@ import com.chrisseto.quicksilver.base.PowerUpBase;
 import com.chrisseto.quicksilver.managment.ActiveManager;
 import com.chrisseto.quicksilver.util.Assets;
 
-public class SpikePowerUp extends PowerUpBase {
+public class ExplosionPowerUp extends PowerUpBase {
 
-	public SpikePowerUp(float pX, float pY,
-		 VertexBufferObjectManager vbom,
+	public ExplosionPowerUp(float pX, float pY,
+			VertexBufferObjectManager pVertexBufferObjectManager,
 			ActiveManager parent) {
-		super(parent.getPlayer().getX(), parent.getPlayer().getY(), 70,
-				Assets.getInstance().spikes, vbom, parent, 5);
+		super(pX, pY, 35, Assets.getInstance().explosion_pu,
+				pVertexBufferObjectManager, parent, 4);
+		// Fade out
+		// Update radius with scaling :s
 	}
-	//This should rotate with the player
+
 	@Override
 	protected void start() {
-		this.setScale(.1f);
-		this.registerEntityModifier(new ScaleModifier(.5f, .1f, 1));
+		this.setAlpha(.7f);
+		this.registerEntityModifier(new ScaleModifier(2, 1, 4));
+
 	}
 
-	@Override
 	protected void beginFinish() {
-		this.registerEntityModifier(new ScaleModifier(.5f, 1, .1f,
+		this.registerEntityModifier(new AlphaModifier(1.5f, .7f, 0,
 				new IEntityModifierListener() {
 
 					@Override
@@ -41,17 +44,17 @@ public class SpikePowerUp extends PowerUpBase {
 					public void onModifierFinished(
 							IModifier<IEntity> pModifier, IEntity pItem) {
 						finish();
+
 					}
 				}));
-
 	}
+
 
 	@Override
 	public void update() {
-		this.setX(this.parent.getPlayer().getX());
-		this.setY(this.parent.getPlayer().getY());
-		this.setRotation(this.parent.getPlayer().getRotation());
+		// TODO Auto-generated method stub
 
 	}
+
 
 }

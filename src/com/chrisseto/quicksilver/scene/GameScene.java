@@ -13,10 +13,10 @@ import org.andengine.util.adt.align.HorizontalAlign;
 
 import android.hardware.Sensor;
 
+import com.chrisseto.quicksilver.Player;
 import com.chrisseto.quicksilver.managment.PowerUpManger;
 import com.chrisseto.quicksilver.managment.SceneManager;
 import com.chrisseto.quicksilver.managment.SceneManager.SceneType;
-import com.chrisseto.quicksilver.object.Player;
 import com.chrisseto.quicksilver.util.Assets;
 
 public class GameScene extends com.chrisseto.quicksilver.base.BaseScene

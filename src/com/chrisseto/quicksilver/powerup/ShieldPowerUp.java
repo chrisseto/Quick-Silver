@@ -1,5 +1,5 @@
 
-package com.chrisseto.quicksilver.object.powerup;
+package com.chrisseto.quicksilver.powerup;
 
 import org.andengine.entity.IEntity;
 import org.andengine.entity.modifier.AlphaModifier;

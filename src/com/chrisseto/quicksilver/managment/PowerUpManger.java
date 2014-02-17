@@ -7,10 +7,10 @@ import org.andengine.entity.scene.Scene;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import org.andengine.util.debug.Debug;
 
+import com.chrisseto.quicksilver.Player;
 import com.chrisseto.quicksilver.base.Manager;
-import com.chrisseto.quicksilver.object.Player;
-import com.chrisseto.quicksilver.object.powerup.DormantPowerUp;
-import com.chrisseto.quicksilver.object.powerup.DormantPowerUp.PowerUpType;
+import com.chrisseto.quicksilver.powerup.DormantPowerUp;
+import com.chrisseto.quicksilver.powerup.DormantPowerUp.PowerUpType;
 
 public class PowerUpManger extends Manager<DormantPowerUp> {
 	final Player player;

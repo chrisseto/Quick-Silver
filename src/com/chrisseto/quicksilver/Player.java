@@ -1,4 +1,4 @@
-package com.chrisseto.quicksilver.object;
+package com.chrisseto.quicksilver;
 
 import org.andengine.engine.camera.Camera;
 import org.andengine.entity.sprite.Sprite;

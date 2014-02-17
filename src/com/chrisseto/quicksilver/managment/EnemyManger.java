@@ -4,9 +4,9 @@ import org.andengine.engine.camera.Camera;
 import org.andengine.entity.scene.Scene;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
+import com.chrisseto.quicksilver.EnemyBall;
+import com.chrisseto.quicksilver.Player;
 import com.chrisseto.quicksilver.base.Manager;
-import com.chrisseto.quicksilver.object.EnemyBall;
-import com.chrisseto.quicksilver.object.Player;
 import com.chrisseto.quicksilver.util.Assets;
 import com.chrisseto.quicksilver.util.Vector;
 

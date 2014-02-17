@@ -1,4 +1,4 @@
-package com.chrisseto.quicksilver.object;
+package com.chrisseto.quicksilver;
 
 import java.util.ArrayList;
 

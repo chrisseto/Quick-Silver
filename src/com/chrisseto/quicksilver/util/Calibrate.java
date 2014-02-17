@@ -1,6 +1,6 @@
 package com.chrisseto.quicksilver.util;
 
-import com.chrisseto.quicksilver.object.Player;
+import com.chrisseto.quicksilver.Player;
 
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;

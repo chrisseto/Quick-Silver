@@ -5,8 +5,8 @@ import org.andengine.engine.handler.timer.TimerHandler;
 import org.andengine.opengl.texture.region.ITextureRegion;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
+import com.chrisseto.quicksilver.EnemyBall;
 import com.chrisseto.quicksilver.managment.ActiveManager;
-import com.chrisseto.quicksilver.object.EnemyBall;
 import com.chrisseto.quicksilver.util.Assets;
 import com.chrisseto.quicksilver.util.Collision;
 
