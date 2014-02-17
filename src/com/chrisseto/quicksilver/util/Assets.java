@@ -144,7 +144,7 @@ public class Assets {
         spike_pu = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "Spike Orb.png");
         shield_pu = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "Shield Orb.png");
         shield = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "Shield.png");
-        spikes = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "Spike.png");
+        spikes = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "Spikes.png");
         
        // complete_window_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "levelCompleteWindow.png");
 

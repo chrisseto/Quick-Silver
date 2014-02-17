@@ -14,6 +14,7 @@ TODO
 * Powerup alogrithm
 * Shield should be smaller than spikes
 * location generator
+* Collision Errors
 
 
 ###Algorithms
