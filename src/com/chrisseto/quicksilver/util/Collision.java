@@ -13,7 +13,7 @@ public class Collision {
 	}
 	
 	public static boolean collides(float x1, float y1, float r1, float x2, float y2, float r2) {
-		return sq(x2 - x1) + sq(y2 - y1) < sq(y2 - y1);
+		return sq(x2 - x1) + sq(y2 - y1) < sq(r2 - r1);
 	}
 	
 	//TODO Double check and implment me.
