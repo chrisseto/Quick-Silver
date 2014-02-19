@@ -15,7 +15,12 @@ TODO
 * Shield should be smaller than spikes
 * location generator
 * Collision Errors
-
+    - mostly fixed enemies sometime live when they shoudln't
+* Shields should not be stackable
+    - is unique?
+* medals?
+    - on condition met -> show award
+* The box issue....
 
 ###Algorithms
 
