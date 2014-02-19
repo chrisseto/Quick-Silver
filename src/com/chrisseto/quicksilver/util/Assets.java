@@ -140,8 +140,8 @@ public class Assets {
         game_background = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "Field.png");
        	ball_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "Player.png");
        	enemy_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "enemy.png");
-        explosion_pu = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "orb/Explosion.png");
-        spike_pu = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "orb/Spike.png");
+        explosion_pu = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "orbs/Explosion.png");
+        spike_pu = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "orbs/Spike.png");
         shield_pu = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "orbs/Shield.png");
         shield = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "powerups/Shield.png");
         spikes = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "powerups/Spikes.png");

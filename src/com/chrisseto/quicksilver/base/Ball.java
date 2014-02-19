@@ -67,6 +67,10 @@ public abstract class Ball extends Sprite {
 		return Collision.collides(this, other);
 	}
 
+	public String toString()
+	{
+		return "[" + this.getPosition() +", r=" + this.getRadius() +"]";
+	}
 	//TODO
 	public static float bound(float toBound, float high, float low)
 	{

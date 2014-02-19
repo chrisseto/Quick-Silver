@@ -25,7 +25,8 @@ public class Player extends Sprite implements SensorEventListener {
 	}
 
 	public boolean collidesWith(Ball b) {
-		if (super.collidesWith(b)) {
+
+		//if (super.collidesWith(b)) {
 			/*
 			 * float sq = b.getRadius()*b.getRadius(); float dx,dy; for(int i =
 			 * 0; i < 3; i++) { dx = getVertexX(i+1) - b.getX(); dy =
@@ -38,8 +39,8 @@ public class Player extends Sprite implements SensorEventListener {
 			return Collision.collides(b, getX(), getY(), getRadius());
 
 			// return true;
-		} else
-			return false;
+		//} else
+			//return false;
 	}
 
 	private void checkBounds() {
