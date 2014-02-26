@@ -7,6 +7,7 @@ import org.andengine.entity.scene.Scene;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.text.Text;
 import org.andengine.entity.text.TextOptions;
+import org.andengine.extension.physics.box2d.PhysicsWorld;
 import org.andengine.input.touch.TouchEvent;
 import org.andengine.opengl.util.GLState;
 import org.andengine.util.adt.align.HorizontalAlign;
@@ -14,6 +15,7 @@ import org.andengine.util.adt.align.HorizontalAlign;
 import android.hardware.Sensor;
 
 import com.chrisseto.quicksilver.Player;
+import com.chrisseto.quicksilver.ScoreKeeper;
 import com.chrisseto.quicksilver.managment.PowerUpManger;
 import com.chrisseto.quicksilver.managment.SceneManager;
 import com.chrisseto.quicksilver.managment.SceneManager.SceneType;
@@ -21,17 +23,17 @@ import com.chrisseto.quicksilver.util.Assets;
 
 public class GameScene extends com.chrisseto.quicksilver.base.BaseScene
 		implements IOnSceneTouchListener {
-	private int score = 0;
-	private double mult = 1;
-
+	
 	private HUD gameHUD;
 	private Text scoreText;
 
 	private Player player;
 	private PowerUpManger powerUpManager;
+	private ScoreKeeper score;
 
 	private Text gameOverText;
 	private boolean gameOverDisplayed = false;
+	private PhysicsWorld physics;
 
 	@Override
 	public void createScene() {
@@ -39,6 +41,7 @@ public class GameScene extends com.chrisseto.quicksilver.base.BaseScene
 		createHUD();
 		createGameOverText();
 
+		score = new ScoreKeeper();
 		player = new Player(vbom, camera);
 
 		Assets.getInstance().sensorManager.registerListener(player, Assets
@@ -65,7 +68,7 @@ public class GameScene extends com.chrisseto.quicksilver.base.BaseScene
 		camera.setHUD(null);
 		camera.setChaseEntity(null); // TODO
 		camera.setCenter(400, 240);
-
+		score.stop();
 		// TODO code responsible for disposing scene
 		// removing all game scene objects.
 	}
@@ -107,13 +110,9 @@ public class GameScene extends com.chrisseto.quicksilver.base.BaseScene
 		});
 	}
 
-	public void addToScore(boolean mul) {
-		if (mul)
-			mult += 1;
-		else
-			mult = 1;
-		score += mult;
-		scoreText.setText("Score: " + score);
+	public void addToScore() {
+		score.addScore();
+		scoreText.setText("Score: " + score.getScore());
 	}
 
 	@Override

@@ -37,7 +37,6 @@ public class ActiveManager extends Manager<PowerUpBase> {
 		Iterator<EnemyBall> eIt = enemy.getIterator();
 		PowerUpBase base;
 		EnemyBall e;
-		hit = false;
 		while(it.hasNext())
 		{
 			base = it.next();
@@ -49,9 +48,8 @@ public class ActiveManager extends Manager<PowerUpBase> {
 				e = eIt.next();
 				if(base.collidesWith(e))//Overload this to ball check in base class Override in classes like shield etc.
 				{
-					hit = true;
 					e.die();
-					((GameScene)parent).addToScore(hit);
+					((GameScene)parent).addToScore();
 					eIt.remove();
 				}
 			}
